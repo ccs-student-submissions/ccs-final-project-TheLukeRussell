@@ -15,14 +15,14 @@ class ProfileCreate extends Component {
         profile: [],
         created_by: '',
         about: '',
-        // guitar: false,
-        // piano: false,
-        // drums: false,
+        guitar: false,
+        piano: false,
+        drums: false,
     };
 
-    // handleCheckboxChange = (e) => {
-    // this.setState({[e.target.name]: e.target.checked});
-    //     }
+    handleCheckboxChange = (e) => {
+    this.setState({[e.target.name]: e.target.checked});
+        }
 
     handleChange = (e) => {
         this.setState({[e.target.name]: e.target.value});
@@ -39,37 +39,37 @@ class ProfileCreate extends Component {
     reader.readAsDataURL(file);
     }
 
-    // choiceForm = (key, instruments) => {
-    //     for (let key in this.state.instruments) {
-    //         if (key === true);
-    //         console.log(this.state.instruments)
-    //     } return instruments[key];
-    // }
+    choiceForm = (key, instruments) => {
+        for (let key in this.state.instruments) {
+            if (key === true);
+            console.log(this.state.instruments)
+        } return instruments[key];
+    }
 
     handleSubmit = (e) => {
     e.preventDefault();
 
-    // let obj = {
-    //     guitar: 'Guitar',
-    //     piano: 'Piano',
-    //     drums: 'Drums',
-    // }
+    let obj = {
+        guitar: 'Guitar',
+        piano: 'Piano',
+        drums: 'Drums',
+    }
 
     let formData = new FormData();
     let data = this.state;
-    // let instruments = []
+    let instruments = []
 
-    // for (let key in obj) {
-    //     if (data[key] === true) {
-    //         instruments.push(obj[key]);
-    //     }
-    // }
+    for (let key in obj) {
+        if (data[key] === true) {
+            instruments.push(obj[key]);
+        }
+    }
 
     formData.append('name', this.state.name);
     formData.append('avatar', this.state.avatar);
     formData.append('about', this.state.about);
-    // formData.append('instruments', JSON.stringify(instruments));
-    // console.log(instruments);
+    formData.append('instruments', JSON.stringify(instruments));
+    console.log(instruments);
     axios.post(`/api/v1/profile/create/`, formData, {
         headers : {
         'content-type': 'multipart/form-data',
@@ -78,7 +78,7 @@ class ProfileCreate extends Component {
     })
     .then(res => {
         console.log(res);
-        this.props.history.push('/');
+        this.props.history.push('/events/');
     })
     .catch(error =>{
         console.log(error);
@@ -109,7 +109,7 @@ class ProfileCreate extends Component {
                 <div className="row no-gutters form-group mb-5">
                     <textarea className='col-md-4 form-control' type="text" name='about' value={this.state.about} onChange={this.handleChange} />
                 </div>
-            {/* <p>What Instruments Do You Play?</p>
+            <p>What Instruments Do You Play?</p>
             <span>Hold cmd and select your instrumets if you play multiple</span>
                 <div class="row no-gutters form-check">
                     <input type="checkbox" checked={this.state.guitar} name='guitar' value={this.state.guitar} onChange={this.handleCheckboxChange} />
@@ -120,7 +120,7 @@ class ProfileCreate extends Component {
 
                     <input type="checkbox" checked={this.state.drums} name='drums' value={this.state.drums} onChange={this.handleCheckboxChange} />
                     <label for="drums">Drums</label>
-                </div> */}
+                </div>
             <p>Select an Image!</p>
             {this.state.avatar ? (
             <img src={this.state.preview} alt='preview'/>

@@ -22,12 +22,8 @@ app_name = 'frontend'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('events/', include('events.urls', namespace = 'events')),
+    path('events/', include('events.urls', namespace = 'events')),
     path('api/v1/', include('api.urls')),
-    path('api/v1/rest-auth/', include('rest_auth.urls')),
-    path('api/v1/rest-auth/registration/', include('rest_auth.registration.urls')),
-    path('rest-auth/', include('rest_auth.urls')),
-    path('rest-auth/registration/', include('rest_auth.registration.urls')),
     path('auth-api/', include('rest_framework.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('allauth.urls')),

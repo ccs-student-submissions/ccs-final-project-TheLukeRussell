@@ -7,15 +7,17 @@ class User(AbstractUser):
 
 class UserProfile(models.Model):
     name = models.CharField(max_length=255)
-    # email = models.EmailField(max_length=255)
     avatar = models.ImageField(upload_to='images/', blank=True, null=True)
     about = models.TextField()
-    # instruments = models.ManyToManyField('Instrument', related_name='instruments', blank=True)
+    instruments = models.ManyToManyField('Instrument', related_name='instruments', blank=True)
     created_by = models.OneToOneField(User, related_name='profile', blank=True, on_delete=models.CASCADE)
     is_active = models.BooleanField(default=True)
 
-# class Instrument(models.Model):
-#     text = models.TextField()
+    def __str__(self):
+        return self.name
 
-#     def __str__(self):
-#         return self.text
+class Instrument(models.Model):
+    text = models.TextField()
+
+    def __str__(self):
+        return self.text

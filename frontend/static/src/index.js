@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,12 +8,17 @@ import './App.css';
 import Home from './components/Home';
 import Login from './components/Login';
 import Registration from './components/Registration';
+import ProfileList from './components/ProfileList';
 import ProfileCreate from './components/ProfileCreate';
 import ProfileDetail from './components/ProfileDetail';
 import EventList from './components/EventList';
 import EventForm from './components/EventForm';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
+
+
+axios.defaults.xsrfCookieName = 'csrftoken';
+axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 
 ReactDOM.render(
     <React.Fragment>
@@ -23,8 +29,9 @@ ReactDOM.render(
                     <Route path='/events/' component={EventList}></Route>
                     <Route exact path='/' component={Home}></Route>
                     <Route path='/add-event' component={EventForm}></Route>
+                    <Route path='/list' component={ProfileList}></Route>
                     <Route exact path='/create/' component={ProfileCreate}></Route>
-                    <Route exact path='/profile/' component={ProfileDetail}></Route>
+                    <Route exact path='/profile/detail/:id/' component={ProfileDetail}></Route>
                 </Switch>
         </Router>
     </React.Fragment>
