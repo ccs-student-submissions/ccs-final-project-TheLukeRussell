@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Source+Sans+Pro|Spartan&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+.container-fluid {
+  background-image: url("https://www.transparenttextures.com/patterns/green-dust-and-scratches.png"), linear-gradient(350deg, #333579 0%, rgba(0,0,0,1) 58.15%);
+  position: absolute;
+  color: #eee;
+  min-height: 100vh;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Lato', sans-serif;
+  font-size: 3vmin;
+  
+}
+
+.bg-image {
+  background-image: url("https://media.dmbk.io/wp-content/uploads/sites/16/2020/01/10011956/dwilly-galleria-10.jpg") !important;
+  height: 100vh;
+  width: 100vw;
+  filter: blur(6px);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background: linear-gradient(350deg, rgba(51, 53, 121, 0.68) 0%, rgba(0,0,0,.8) 58.15%);
+  color: white;
+  font-weight: bold;
+  border: 1px solid #fff;
+  box-shadow: 0px 0px 13px 0px rgba(255,255,255,1);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 70vw;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.btn-dark {
+  background-image: url("https://www.transparenttextures.com/patterns/green-dust-and-scratches.png"), linear-gradient(350deg, #333579 0%, rgba(0,0,0,1) 58.15%);
+  /* padding: 20px; */
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+#root {
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes neon {
+  from {
+      text-shadow: 0 0 10px #d2d1d8, 0 0 20px #7865d6, 0 0 30px #6451be, 0 0 40px #4c3ca0, 0 0 70px #36287c, 0 0 80px #251a5c, 0 0 100px #170f3f, 0 0 150px #000;
+  }
+
+  to {
+      text-shadow: 0 0 5px #d2d1d8, 0 0 10px #7865d6, 0 0 15px #6451be, 0 0 20px #4c3ca0, 0 0 35px #36287c, 0 0 40px #251a5c, 0 0 50px #170f3f, 0 0 75px #000;
+  }
+}
+
+p {
+  font-family: 'Spartan', sans-serif;
+}
+
+.btn--login {
+  background-color: transparent;
+  border-radius: 40px;
+  border: 4pt solid #1DB954;
+  color: #1DB954;
+  font-family: 'Lato', sans-serif;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 14px 30px;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+}
+
+.btn--login:hover {
+  background: #1ED55F;
+  color: #333;
+  border: 4pt solid #1ED55F;
+}
+
+.App {
+  text-align: center;
+}
+
+h1 {
+  padding: 30px;
+  text-align: center;
+}
+
+h3 {
+  padding: 30px;
+  margin-bottom: 50px;
+}
+h5 {
+  padding: 10px;
+}
+
+a.nav-link{
+  color: #fff !important;
+  font-size: 22px;
+  margin: 0 40px;
+}
+
+a.nav-link:hover {
+  color: #b1afaf !important;
+}
+
+#content-sources {
+  font-size: 12px;
+  margin-top: 150px;
+}
+
+#signup-login {
+  margin: 0 auto;
+  text-align: center;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.login, .register {
+  /* background-color: #fff; */
+  padding: 30px;
+}
+
+#header-item {
+  margin: 0 50px;
+  font-size: 22px;
+  padding: 20px;
+  color: white;
+}
+
+#header-item a, #header-item button {
+  color: #fff;
+  font-size: 22px;
+  vertical-align: middle;
+}
+
+#header-item a:hover, #header-item button:hover {
+  animation: neon 1.5s ease-in-out infinite alternate;
+  text-decoration: none;
+}
+
+button.btn.btn-link {
+  padding: 0;
+}
+
+.card {
+  background-image: url("https://www.transparenttextures.com/patterns/green-dust-and-scratches.png");
+  background-color: #000;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+  border: #4c4ecf solid 2pt;
+  border-radius: 10px;
+}
+
+/* .blur {
+  background: url('https://media.dmbk.io/wp-content/uploads/sites/16/2020/01/10011956/dwilly-galleria-10.jpg') center fixed;
+  background-size: cover;
+  overflow: hidden;
+  filter: blur(13px);
+  position: absolute;
+  height: 500px;
+  top: 200px;
+  width: 75vw;
+  margin: 0 auto;
+  left: -50px;
+  right: -50px;
+  bottom: -50px;
+}
+
+.center {
+  position: absolute;
+  margin: auto;
+  top: 200px ;
+  bottom: 0;
+  left: 0;
+  right: 0;
+} */
+
+.form-control {
+  margin: 0 auto;
+}
+
+.profile-head img {
+  width: 200px;
+}
+
+.profile-head {
+text-align: center;
+margin-bottom: 20px;
+}
+
+#profile-box {
+  background-image: url("https://www.transparenttextures.com/patterns/green-dust-and-scratches.png");
+  background-color: #000;
+  margin: 20px auto;
+  color: #fff;
+  min-height: 200px;
+  border: #4c4ecf solid 2pt;
+}
+
+iframe {
+  margin-top: 20px;
+}
+
+#preview {
+  width: 200px;
+}
