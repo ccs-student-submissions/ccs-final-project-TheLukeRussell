@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Header from './Header'
 import { Card } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSFRToken'
@@ -25,7 +26,7 @@ class ProfileList extends Component {
 
     render() {
         const profiles = this.state.profiles.map(profile => (
-                <Card className='mb-5' id='event-card' style={{ width: '50rem' }}>
+                <Card className='mb-5' id='profile-card'>
                 <Card.Img variant="top" src={profile.avatar} />
                 <Card.Body>
                 <Card.Title>Name: </Card.Title>
@@ -33,6 +34,9 @@ class ProfileList extends Component {
                 <Card.Title>About: </Card.Title>
                     <Card.Text>{profile.about}</Card.Text>
                 </Card.Body>
+                {/* <Link to={`/profile/detail/${props.profile.id}/`}>
+                <button className='btn btn-dark mr-2'>View Profile</button>
+                    </Link> */}
                 </Card>
         ))
         return(

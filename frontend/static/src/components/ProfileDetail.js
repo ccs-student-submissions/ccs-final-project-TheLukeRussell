@@ -21,7 +21,7 @@ class ProfileDetail extends Component {
 
     componentDidMount() {
         // console.log(JSON.parse(localStorage.getItem('my-app-user')).key)
-        axios.get(`/api/v1/profile/${this.props.match.params.id}/`)
+        axios.get(`/api/v1/profile/${this.props.match.params.id}/`, )
             .then(res => {
             console.log('res', res.data);
             this.setState(res.data);
@@ -30,15 +30,18 @@ class ProfileDetail extends Component {
             console.log(error);
         });
 }
-
 render() {
-    console.log(this.state)
+    const uri = this.state.uri
+    // const link = this.state.link
+    // const artistPlay = `${link}`
+    const artistFollow = `https://open.spotify.com/follow/1/?uri=${uri}&size=detail&theme=dark`
+    console.log(artistPlay);
     return(
         <React.Fragment>
         <Header />
         <div className="profile-head">
             <h1>Profile Page of {this.state.name}</h1>
-            <img src="https://i.scdn.co/image/ab67616d0000b2733572e262f36c38456caaffd6" alt="profile"/>
+            <img src={this.state.avatar} alt="profile"/>
             <div className="w-100"></div>
         </div>
         <div className="row no-gutters profile-detail">
@@ -63,8 +66,9 @@ render() {
         </div>
     </div>
     <div className="col-2">
-    <iframe src="https://open.spotify.com/follow/1/?uri=spotify:artist:3XyvBNwsPBVhCXoYLNNQ84&size=detail&theme=dark" title='player' width="300" height="56" scrolling="no" frameBorder="0" allowtransparency="true"></iframe>
-        <iframe src="https://open.spotify.com/embed/artist/3XyvBNwsPBVhCXoYLNNQ84" title='follow' width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    <iframe src={artistFollow} title='player' width="300" height="56" scrolling="no" frameBorder="0" allowtransparency="true"></iframe>
+        <iframe src='https://open.spotify.com/artist/1uNFoZAHBGtllmzznpCI3s?' title='follow' width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
 </div>
         </React.Fragment>

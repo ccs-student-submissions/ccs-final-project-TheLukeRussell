@@ -176,29 +176,17 @@ button.btn.btn-link {
   border-radius: 10px;
 }
 
-/* .blur {
-  background: url('https://media.dmbk.io/wp-content/uploads/sites/16/2020/01/10011956/dwilly-galleria-10.jpg') center fixed;
-  background-size: cover;
-  overflow: hidden;
-  filter: blur(13px);
-  position: absolute;
-  height: 500px;
-  top: 200px;
-  width: 75vw;
+#profile-card {
+  background-image: url("https://www.transparenttextures.com/patterns/green-dust-and-scratches.png");
+  background-color: #000;
   margin: 0 auto;
-  left: -50px;
-  right: -50px;
-  bottom: -50px;
+  text-align: center;
+  width: 20vw;
+  padding: 20px;
+  border: #4c4ecf solid 2pt;
+  border-radius: 10px;
 }
 
-.center {
-  position: absolute;
-  margin: auto;
-  top: 200px ;
-  bottom: 0;
-  left: 0;
-  right: 0;
-} */
 
 .form-control {
   margin: 0 auto;
@@ -220,6 +208,8 @@ margin-bottom: 20px;
   color: #fff;
   min-height: 200px;
   border: #4c4ecf solid 2pt;
+  padding: 10px;
+  text-align: center;
 }
 
 iframe {
