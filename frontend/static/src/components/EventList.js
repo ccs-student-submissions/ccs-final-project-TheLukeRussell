@@ -20,7 +20,9 @@ class EventList extends Component {
     componentDidMount() {
         console.log(JSON.parse(localStorage.getItem('my-app-user')).key)
         axios.get(`/api/v1/events/`)
-            .then(res => this.setState({events: res.data}))
+            .then(res => {
+                this.setState({events: res.data})
+                console.log(res.data)})
             .catch(error => {
             console.log(error);
             });
