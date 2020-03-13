@@ -36,7 +36,7 @@ class ProfileList extends Component {
                 </Card.Body>
                 <Link to={`/profile/detail/${profile.id}/`}>
                 <button className='btn btn-dark mr-2'>View Profile</button>
-                    </Link>
+                </Link>
                 </Card>
         ))
         return(

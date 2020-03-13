@@ -11,6 +11,8 @@ class Header extends Component {
 
     state = {
         move: false,
+        profiles: []
+
     }
 
     logout = () => {
@@ -30,7 +32,7 @@ class Header extends Component {
         {localStorage.getItem('my-app-user') ? (
             <Navbar>
                 <Nav className="m-auto">
-                    <li id='header-item'><Link to="/profile/detail/5/">Profile</Link></li>
+                    <li id='header-item'><Link to="/profile/detail/5">Profile</Link></li>
                     <li id='header-item'><Link to="/list/">Connect</Link></li>
                     <li id='header-item'><Link to="/events/">Events</Link></li>
                     <li id='header-item'><Link to="/add-event">Add an Event</Link></li>

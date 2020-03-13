@@ -67,7 +67,7 @@ class EventForm extends Component {
         return(
             <React.Fragment>
             <Header />
-            <div className='mt-5 card col-xl-6 col-11'>
+            <div className='mt-5 mb-5 card col-xl-6 col-11'>
                 <h2 className='p-3'>Add An Event!</h2>
             <form id='event-form' className='mt-5' onSubmit={this.handleSubmit}>
                 <p>Title</p>

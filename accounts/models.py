@@ -13,6 +13,15 @@ class UserProfile(models.Model):
     instruments = models.ManyToManyField('Instrument', related_name='instruments', blank=True)
     created_by = models.OneToOneField(User, related_name='profile', blank=True, on_delete=models.CASCADE)
     is_active = models.BooleanField(default=True)
+    # following = models.ManyToManyField('Connection', related_name='connections', blank=True)
+
+    def get_connections(self):
+        connections = Connection.objects.filter(creator=self.user)
+        return connections
+
+    def get_followers(self):
+        followers = Connection.objects.filter(following=self.user)
+        return followers
 
     def __str__(self):
         return self.name
@@ -22,3 +31,10 @@ class Instrument(models.Model):
 
     def __str__(self):
         return self.text
+
+class Connection(models.Model):
+    creator = models.ForeignKey(User, related_name="friendship_creator_set", on_delete=models.CASCADE)
+    following = models.ForeignKey(User, related_name="friend_set", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.creator) + " followed " + str(self.following)

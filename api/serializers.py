@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from accounts.models import UserProfile, User, Instrument
+from accounts.models import UserProfile, User, Instrument, Connection
 from django import forms
 import json
 
@@ -42,3 +42,24 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
+
+class UserListSerializer(serializers.ModelSerializer):
+
+    following = serializers.SerializerMethodField()
+    follows_requesting_user = serializers.SerializerMethodField()
+
+    class Meta:
+        model = UserProfile
+        fields = '__all__'
+
+    def get_following(self, obj):
+        creator = self.context['request'].user
+        following = obj.created_by
+        connected = Connection.objects.filter(creator=creator, following=following)
+        return len(connected)
+
+    def get_follows_requesting_user(self, obj):
+        creator = self.context['request'].user
+        following = obj.created_by
+        connected = Connection.objects.filter(creator=following, following=creator)
+        return len(connected)

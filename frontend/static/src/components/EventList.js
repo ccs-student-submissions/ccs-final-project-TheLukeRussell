@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Header from './Header'
 import UpdateEventForm from './UpdateEventForm'
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSFRToken'
@@ -74,7 +74,7 @@ class EventList extends Component {
 
     render() {
         const events = this.state.events.map(event => (
-                <Card className='mb-5' id='event-card' style={{ width: '50rem' }}>
+                <Card className='mb-5' id='event-card' style={{ width: '50', display: 'flex' }}>
                 <Card.Img variant="top" src={event.image} />
                 <Card.Body>
                 <Card.Title>Title: </Card.Title>
@@ -89,8 +89,8 @@ class EventList extends Component {
                     <Card.Text>{event.created_by}</Card.Text>
                 <Card.Title>Who's coming?!: </Card.Title>
                     <Card.Text>{event.attendees}</Card.Text>
-                    <button onClick={() => this.handleDelete(event)} className='mr-2 btn btn-danger'>Delete</button>
-                    <button onClick={() => this.editEvent(event)} className=' ml-2 btn btn-primary'>Edit</button>
+                    <Button onClick={() => this.handleDelete(event)} className='mr-2 btn btn-danger'>Delete</Button>
+                    <Button onClick={() => this.editEvent(event)} className=' ml-2 btn btn-primary'>Edit</Button>
                 </Card.Body>
                 </Card>
         ))
