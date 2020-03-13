@@ -10,7 +10,6 @@ class UserProfile(models.Model):
     avatar = models.ImageField(upload_to='images/', blank=True, null=True)
     about = models.TextField()
     uri = models.CharField(max_length=255, blank=True)
-    link = models.CharField(max_length=55)
     instruments = models.ManyToManyField('Instrument', related_name='instruments', blank=True)
     created_by = models.OneToOneField(User, related_name='profile', blank=True, on_delete=models.CASCADE)
     is_active = models.BooleanField(default=True)

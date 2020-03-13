@@ -32,10 +32,9 @@ class ProfileDetail extends Component {
 }
 render() {
     const uri = this.state.uri
-    // const link = this.state.link
-    // const artistPlay = `${link}`
-    const artistFollow = `https://open.spotify.com/follow/1/?uri=${uri}&size=detail&theme=dark`
-    // console.log(artistPlay);
+    const artistPlay = `https://open.spotify.com/embed/artist/${uri}`
+    const artistFollow = `https://open.spotify.com/follow/1/?uri=spotify:artist:${uri}&size=detail&theme=dark`
+    console.log(artistPlay);
     return(
         <React.Fragment>
         <Header />
@@ -67,8 +66,7 @@ render() {
     </div>
     <div className="col-2">
     <iframe src={artistFollow} title='player' width="300" height="56" scrolling="no" frameBorder="0" allowtransparency="true"></iframe>
-        {/* <iframe src='https://open.spotify.com/artist/1uNFoZAHBGtllmzznpCI3s?' title='follow' width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe> */}
-        <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <iframe src={artistPlay} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
 </div>
         </React.Fragment>
