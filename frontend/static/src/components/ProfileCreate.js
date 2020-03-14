@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+
+library.add(fab, faSearch)
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -99,35 +105,41 @@ class ProfileCreate extends Component {
     return (
         <React.Fragment>
             <section>
-            <form onSubmit={this.handleSubmit}>
-            <h2>Create Your Profile</h2>
-            <p>What's Your Name?</p>
-                <div className="row no-gutters form-group mb-5">
-                    <input type='text' name='name' value={this.state.name} onChange={this.handleChange}/>
+            <form id='profile-create' onSubmit={this.handleSubmit}>
+            <h1 className='mb-5'>Create Your Profile</h1>
+            <h5>What's Your Name?</h5>
+                <div className="form-group mb-5">
+                    <input className='col-md-4 form-control mb-5' type='text' name='name' value={this.state.name} onChange={this.handleChange}/>
                 </div>
-            <p>About Me</p>
+            <h5 className='mt-5'>About Me</h5>
                 <div className="row no-gutters form-group mb-5">
                     <textarea className='col-md-4 form-control' type="text" name='about' value={this.state.about} onChange={this.handleChange} />
                 </div>
-            <p>What Instruments Do You Play?</p>
-            <span>Hold cmd and select your instrumets if you play multiple</span>
-                <div class="row no-gutters form-check">
+            <h5 className='mt-5'>What Instruments Do You Play?</h5>
+                <div className="row no-gutters form-check">
                     <input type="checkbox" checked={this.state.guitar} name='guitar' value={this.state.guitar} onChange={this.handleCheckboxChange} />
-                    <label for="guitar">Guitar</label>
-
+                    <label htmlFor="guitar">Guitar</label>
                     <input type="checkbox" checked={this.state.piano} name='piano' value={this.state.piano} onChange={this.handleCheckboxChange} />
-                    <label for="piano">Piano</label>
+                    <label htmlFor="piano">Piano</label>
 
                     <input type="checkbox" checked={this.state.drums} name='drums' value={this.state.drums} onChange={this.handleCheckboxChange} />
-                    <label for="drums">Drums</label>
+                    <label htmlFor="drums">Drums</label>
                 </div>
-            <p>Select an Image!</p>
+            <h5 className='mt-5'>Choose Your Profile Pic!</h5>
             {this.state.avatar ? (
             <img src={this.state.preview} alt='preview'/>
             ):(
             <input type='file' name='avatar' onChange={this.handleAvatarChange}/>
             )}
-            <button className='btn btn-primary mt-5'>Save Profile</button>
+            <h4 className='mt-5'>Search for your favorite artist!</h4>
+            <div className="search-container col-md-6">
+                <div><img id='spotify-image' src="/static/public/Spotify_Logo_RGB_Green.png" alt=""/></div>
+                {/* <form action="/action_page.php"> */}
+                    <input className='search-bar' type="text" placeholder="Search for Artist or Track.." name="search"/>
+                    <button className='btn btn--login' type="submit">Submit</button>
+                {/* </form> */}
+            </div>
+            <button className='btn btn-primary mb-5'>Save Profile</button>
             </form>
         </section>
         </React.Fragment>

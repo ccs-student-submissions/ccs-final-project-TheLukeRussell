@@ -11,6 +11,8 @@ class InstrumentSerializer(serializers.ModelSerializer):
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
+    # following = serializers.SerializerMethodField()
+    # follows_requesting_user = serializers.SerializerMethodField()
     instruments = InstrumentSerializer(many=True, required=False)
 
     class Meta:
@@ -35,6 +37,19 @@ class UserProfileSerializer(serializers.ModelSerializer):
             instance.instruments.add(instrument)
 
         return instance
+
+    # def get_following(self, obj):
+    #     creator = self.context['request'].user
+    #     following = obj.created_by
+    #     connected = Connection.objects.filter(creator=creator, following=following)
+    #     return len(connected)
+
+    # def get_follows_requesting_user(self, obj):
+    #     creator = self.context['request'].user
+    #     following = obj.created_by
+    #     connected = Connection.objects.filter(creator=following, following=creator)
+    #     return len(connected)
+        
 
 
 class UserSerializer(serializers.ModelSerializer):

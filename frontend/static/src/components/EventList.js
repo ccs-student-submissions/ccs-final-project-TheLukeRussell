@@ -12,20 +12,24 @@ axios.defaults.headers.common["Authorization"] = localStorage.getItem('my-app-us
 class EventList extends Component {
 
     state = {
-        events: [],
+        events: null,
         editingEvent: false,
         eventEditing: {},
     }
-
+    async getEvent(){
+        const res = await axios.get(`/api/v1/events/`)
+        return await res;
+    }
     componentDidMount() {
-        console.log(JSON.parse(localStorage.getItem('my-app-user')).key)
-        axios.get(`/api/v1/events/`)
-            .then(res => {
-                this.setState({events: res.data})
-                console.log(res.data)})
-            .catch(error => {
-            console.log(error);
-            });
+        if (!this.state.events) {
+            (async () => {
+                try {
+                    this.setState({event: await this.getEvent()});
+                } catch (error) {
+                    console.log(error);
+                }
+            })();
+        }
         }
 
     handleDelete = (event) => {
@@ -73,8 +77,9 @@ class EventList extends Component {
         
 
     render() {
+        console.log(this.state.events)
         const events = this.state.events.map(event => (
-                <Card className='mb-5' id='event-card' style={{ width: '50', display: 'flex' }}>
+                <Card className='col-md-6 mb-5' id='event-card'>
                 <Card.Img variant="top" src={event.image} />
                 <Card.Body>
                 <Card.Title>Title: </Card.Title>
@@ -94,14 +99,18 @@ class EventList extends Component {
                 </Card.Body>
                 </Card>
         ))
+
         if(this.state.editingEvent){
             return <UpdateEventForm editEvent={this.state.editingEvent} eventEditing={this.state.eventEditing} updateEventSubmit={this.updateEventSubmit}  />
         }
         return(
             <React.Fragment>
-                <Header />
+            <Header />
             <h1>Events List</h1>
-            <div>{events}</div>
+            <div>
+                {this.state.event ? <em>Loading...</em> : {events}}
+
+            </div>
             </React.Fragment>
         )
     }

@@ -31,9 +31,26 @@ class ProfileDetail extends Component {
             .catch(error => {
             console.log(error);
         });
+
+        axios.get(`/api/v1/connection/`, )
+            .then(res => {
+            // console.log('res', res.data);
+            this.setState({users: res.data});
+            })
+            .catch(error => {
+            console.log(error);
+        });
 }
 
 render() {
+    if (this.state.users) {
+        console.log(this.state.users)
+        const users = this.state.users.map(user => (
+            console.log(user.following),
+            <h1>{user.name}</h1>
+        ))
+    }
+    // console.log("map of followers",followers)
     const uri = this.state.uri
     const artistPlay = `https://open.spotify.com/embed/artist/${uri}`
     const artistFollow = `https://open.spotify.com/follow/1/?uri=spotify:artist:${uri}&size=detail&theme=dark`
@@ -43,9 +60,9 @@ render() {
         <React.Fragment>
         <Header />
         <div className="profile-head">
-            <h1>Profile Page of {this.state.name}</h1>
+            <h1>Your Profile</h1>
             <img src={this.state.avatar} alt="profile"/>
-            <button></button>
+            <p className='mt-4'>{this.state.name}</p>
         </div>
         <div className="row no-gutters profile-detail">
     <div className="col-10">

@@ -26,7 +26,7 @@ class ProfileList extends Component {
 
     render() {
         const profiles = this.state.profiles.map(profile => (
-                <Card className='mb-5' id='profile-card'>
+                <Card className='mb-5 col-sm-9 col-md-7 col-lg-5 col-xl-3' id='profile-card'>
                 <Card.Img variant="top" src={profile.avatar} />
                 <Card.Body>
                 <Card.Title>Name: </Card.Title>
