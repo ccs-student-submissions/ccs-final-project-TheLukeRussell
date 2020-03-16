@@ -12,24 +12,18 @@ axios.defaults.headers.common["Authorization"] = localStorage.getItem('my-app-us
 class EventList extends Component {
 
     state = {
-        events: null,
+        events: [],
         editingEvent: false,
         eventEditing: {},
     }
-    async getEvent(){
-        const res = await axios.get(`/api/v1/events/`)
-        return await res;
-    }
+
     componentDidMount() {
-        if (!this.state.events) {
-            (async () => {
-                try {
-                    this.setState({event: await this.getEvent()});
-                } catch (error) {
-                    console.log(error);
-                }
-            })();
-        }
+
+        axios.get(`/api/v1/events`)
+            .then(res => this.setState({events: res.data}))
+            .catch(error => {
+                console.log(error);
+            })
         }
 
     handleDelete = (event) => {
@@ -77,9 +71,9 @@ class EventList extends Component {
         
 
     render() {
-        console.log(this.state.events)
+        console.log(this.state.events);
         const events = this.state.events.map(event => (
-                <Card className='col-md-6 mb-5' id='event-card'>
+                <Card key={event.id} className='col-md-6 mb-5' id='event-card'>
                 <Card.Img variant="top" src={event.image} />
                 <Card.Body>
                 <Card.Title>Title: </Card.Title>
@@ -91,9 +85,9 @@ class EventList extends Component {
                 <Card.Title>Location: </Card.Title>
                     <Card.Text>{event.location}</Card.Text>
                 <Card.Title>Who Made It: </Card.Title>
-                    <Card.Text>{event.created_by}</Card.Text>
+                    <Card.Text>{event.created_by.username}</Card.Text>
                 <Card.Title>Who's coming?!: </Card.Title>
-                    <Card.Text>{event.attendees}</Card.Text>
+                    <Card.Text>{event.attendees.username}</Card.Text>
                     <Button onClick={() => this.handleDelete(event)} className='mr-2 btn btn-danger'>Delete</Button>
                     <Button onClick={() => this.editEvent(event)} className=' ml-2 btn btn-primary'>Edit</Button>
                 </Card.Body>
@@ -108,7 +102,6 @@ class EventList extends Component {
             <Header />
             <h1>Events List</h1>
             <div>
-                {/* {this.state.event ? <em>Loading...</em> : {events}} */}
             {events}
             </div>
             </React.Fragment>

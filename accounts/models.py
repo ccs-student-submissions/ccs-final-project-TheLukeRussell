@@ -2,7 +2,11 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
-    pass
+    def get_following(self):
+        return Connection.objects.filter(user=self)
+
+    def get_followers(self):
+        return Connection.objects.filter(following=self)
 
 
 class UserProfile(models.Model):
@@ -15,14 +19,6 @@ class UserProfile(models.Model):
     is_active = models.BooleanField(default=True)
     # following = models.ManyToManyField('Connection', related_name='connections', blank=True)
 
-    def get_connections(self):
-        connections = Connection.objects.filter(creator=self.user)
-        return connections
-
-    def get_followers(self):
-        followers = Connection.objects.filter(following=self.user)
-        return followers
-
     def __str__(self):
         return self.name
 
@@ -33,8 +29,8 @@ class Instrument(models.Model):
         return self.text
 
 class Connection(models.Model):
-    creator = models.ForeignKey(User, related_name="friendship_creator_set", on_delete=models.CASCADE)
-    following = models.ForeignKey(User, related_name="friend_set", on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name="friendship_creator_set", on_delete=models.CASCADE)
+    following = models.ForeignKey(User, related_name="following_set", on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.creator) + " followed " + str(self.following)
+        return str(self.user.username) + " followed " + str(self.following.username)

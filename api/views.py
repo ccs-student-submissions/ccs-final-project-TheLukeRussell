@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions, viewsets
 from django.shortcuts import get_object_or_404
-from accounts.models import UserProfile, User
-from .serializers import UserProfileSerializer, UserSerializer, UserListSerializer
+from accounts.models import UserProfile, User, Connection
+from .serializers import UserProfileSerializer, UserSerializer, ConnectionSerializer
 
 
 class UserListAPIView(generics.ListAPIView):
@@ -48,31 +48,7 @@ class UserProfileListAPIView(generics.ListAPIView):
         user = self.request.user
         return UserProfile.objects.filter(created_by=user.id)
 
-# class AddConnection(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = UserProfile.objects.all()
-#     serializer_class = UserProfileSerializer
+class ConnectionListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Connection.objects.all()
+    serializer_class = ConnectionSerializer
     
-#     def get_object(self):
-#         return UserProfile.objects.get(created_by=self.request.user)
-
-#     def patch(self, request, *args, **kwargs):
-#         # UserProfile.connection.add 
-#         connection = get_object_or_404(UserProfile, pk=pk)
-#         connection.users.add(request.user)
-#         connection.save()
-#         return self.partial_update(request, *args, **kwargs)
-
-class UserListsAPIView(generics.ListAPIView):
-    queryset = UserProfile.objects.all()
-    serializer_class = UserListSerializer
-
-class UserListsDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = UserProfile.objects.all()
-    serializer_class = UserListSerializer
-
-    def get_queryset(self):
-        user = self.request.user
-        return UserProfile.objects.filter(created_by=user.id)
-
-    # def get_object(self):
-    #     return UserProfile.objects.get(created_by=self.request.user)

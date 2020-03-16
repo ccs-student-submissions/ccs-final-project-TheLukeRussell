@@ -16,17 +16,27 @@ class ProfileList extends Component {
     }
 
     componentDidMount() {
-        console.log(JSON.parse(localStorage.getItem('my-app-user')).key)
+        // console.log(JSON.parse(localStorage.getItem('my-app-user')).key)
         axios.get(`/api/v1/profile/`)
             .then(res => this.setState({profiles: res.data}))
             .catch(error => {
             console.log(error);
             });
+
+        // axios.get(`/api/v1/accounts/`, )
+        //     .then(res => {
+        //     // console.log('res', res.data);
+        //     this.setState({users: res.data});
+        //     })
+        //     .catch(error => {
+        //     console.log(error);
+        // });
         }  
 
     render() {
+        console.log(this.state);
         const profiles = this.state.profiles.map(profile => (
-                <Card className='mb-5 col-sm-9 col-md-7 col-lg-5 col-xl-3' id='profile-card'>
+                <Card key={profile.id} className='mb-5 col-sm-9 col-md-7 col-lg-5 col-xl-3' id='profile-card'>
                 <Card.Img variant="top" src={profile.avatar} />
                 <Card.Body>
                 <Card.Title>Name: </Card.Title>
