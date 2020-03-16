@@ -108,8 +108,8 @@ class EventList extends Component {
             <Header />
             <h1>Events List</h1>
             <div>
-                {this.state.event ? <em>Loading...</em> : {events}}
-
+                {/* {this.state.event ? <em>Loading...</em> : {events}} */}
+            {events}
             </div>
             </React.Fragment>
         )

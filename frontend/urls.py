@@ -11,5 +11,5 @@ urlpatterns = [
     path('create/', views.IndexView.as_view(), name = 'index'),
     path('profile/detail/<int:pk>/', views.IndexView.as_view(), name = 'profile-details'),
     path('list/', views.IndexView.as_view(), name = 'profile-list'),
-
+    path('add-event/', views.IndexView.as_view(), name = 'add-event'),
 ]
