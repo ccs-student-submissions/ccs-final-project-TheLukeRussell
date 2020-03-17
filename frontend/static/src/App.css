@@ -267,3 +267,33 @@ iframe {
 p {
   font-size: 20px;
 }
+
+.comment-box {
+  max-width: 37.5rem;
+  color: #fff;
+  text-align: center;
+  margin: 0 auto;
+  background-color: #909090;
+  border-radius: 0.875rem;
+  padding: 0.2rem 1rem 2rem;
+}
+.comment-form {
+  background-color: #fff;
+  border-radius: 0.25rem;
+  margin-bottom: 2rem;
+  padding: 1rem;  
+}
+
+#comment-reveal {
+  float: right;
+  background-color: $nc-blue;
+  color: #fff;
+}
+
+.comment-body {
+  font-style: italic;
+  margin-left: 1rem;
+}
+.comment-footer {
+  margin-bottom: 1rem;
+}

@@ -3,6 +3,7 @@ import axios from 'axios';
 import Header from './Header'
 import UpdateEventForm from './UpdateEventForm'
 import { Card, Button } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSFRToken'
@@ -76,20 +77,10 @@ class EventList extends Component {
                 <Card key={event.id} className='col-md-6 mb-5' id='event-card'>
                 <Card.Img variant="top" src={event.image} />
                 <Card.Body>
-                <Card.Title>Title: </Card.Title>
                     <Card.Text>{event.title}</Card.Text>
-                <Card.Title>Description: </Card.Title>
-                    <Card.Text>{event.description}</Card.Text>
-                <Card.Title>Type: </Card.Title>
-                    <Card.Text>{event.category}</Card.Text>
-                <Card.Title>Location: </Card.Title>
-                    <Card.Text>{event.location}</Card.Text>
-                <Card.Title>Who Made It: </Card.Title>
-                    <Card.Text>{event.created_by.username}</Card.Text>
-                <Card.Title>Who's coming?!: </Card.Title>
-                    <Card.Text>{event.attendees.username}</Card.Text>
-                    <Button onClick={() => this.handleDelete(event)} className='mr-2 btn btn-danger'>Delete</Button>
-                    <Button onClick={() => this.editEvent(event)} className=' ml-2 btn btn-primary'>Edit</Button>
+                    <Button onClick={() => this.handleDelete(event)} className='btn btn-danger'>Delete</Button>
+                    <Button onClick={() => this.editEvent(event)} className='btn btn-primary'>Edit</Button>
+                    <Link to={`/events/${event.id}/`}><button className='btn btn-success'>View Event</button></Link>
                 </Card.Body>
                 </Card>
         ))

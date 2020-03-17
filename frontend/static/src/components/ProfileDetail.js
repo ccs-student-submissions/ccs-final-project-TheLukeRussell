@@ -41,8 +41,8 @@ render() {
     if (this.state.profile) {
         instruments = this.state.profile.instruments.map(instrument => <p>{instrument.text}</p>)
     }
-    // const followers = this.state.followers.map(follower => (
-    //     <div>{followers.following}</div>
+    // const following = this.state.following.following.map(following => (
+    //     <div>{following.id}</div>
     // ))
     console.log(this.state.followers)
     console.log(this.state.following)

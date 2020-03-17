@@ -11,6 +11,7 @@ import Registration from './components/Registration';
 import ProfileList from './components/ProfileList';
 import ProfileCreate from './components/ProfileCreate';
 import ProfileDetail from './components/ProfileDetail';
+import EventDetail from './components/EventDetail';
 import EventList from './components/EventList';
 import EventForm from './components/EventForm';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -26,7 +27,8 @@ ReactDOM.render(
                 <Switch>
                     <Route path='/login' component={Login}></Route>
                     <Route path='/signup' component={Registration}></Route>
-                    <Route path='/events/' component={EventList}></Route>
+                    <Route exact path='/events/' component={EventList}></Route>
+                    <Route exact path='/events/:id/' component={EventDetail}></Route>
                     <Route exact path='/' component={Home}></Route>
                     <Route path='/add-event' component={EventForm}></Route>
                     <Route path='/list' component={ProfileList}></Route>
