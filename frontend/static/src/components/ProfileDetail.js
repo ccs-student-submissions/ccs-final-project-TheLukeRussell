@@ -10,16 +10,17 @@ class ProfileDetail extends Component {
 
 
     state = {
-        editingProfile: false,
-        profileEditing: {},
-        // profile: {}
+        // editingProfile: false,
+        // profileEditing: {},
+        followers: [],
+        following: [],
     }
 
     componentDidMount() {
         // console.log(JSON.parse(localStorage.getItem('my-app-user')).key)
         axios.get(`/api/v1/users/${this.props.match.params.id}/`, )
             .then(res => {
-            console.log('res', res.data);
+            // console.log('res', res.data);
             this.setState(res.data);
             })
             .catch(error => {
@@ -31,21 +32,18 @@ render() {
     // const uri = this.state.uri
     // const artistPlay = `https://open.spotify.com/embed/artist/${uri}`
     // const artistFollow = `https://open.spotify.com/follow/1/?uri=spotify:artist:${uri}&size=detail&theme=dark`
-    // console.log(this.state.profile.avatar)
+    // console.log(this.state.profile.uri)
     // console.log(artistPlay);
-    // let someVarName;
-    // if(this.state.users) {
-    //     someVarName = this.state.users.map(user => <div>I am a user</div>)
-    // }
     let instruments;
     if (this.state.profile) {
         instruments = this.state.profile.instruments.map(instrument => <p>{instrument.text}</p>)
     }
-    // const following = this.state.following.following.map(following => (
-    //     <div>{following.id}</div>
-    // ))
-    console.log(this.state.followers)
-    console.log(this.state.following)
+    const followers = this.state.followers.map(follower => (
+        <p>{follower.user.username}</p>
+    ))
+    const followings = this.state.following.map(following => (
+        <p>{following.following.username}</p>
+    ))
     return(
         <React.Fragment>
         <Header />
@@ -70,9 +68,13 @@ render() {
                 <h2>Instruments:</h2>
                 <div>{instruments}</div>
             </div>
-            <div id='profile-box' className="col-md-5">
-                <h2>Connections:</h2>
-                {/* <div>{followers}</div> */}
+            <div id='profile-box' className="col-md-2">
+                <h2>Followers:</h2>
+                <div>{followers}</div>
+            </div>
+            <div id='profile-box' className="col-md-2">
+                <h2>Following:</h2>
+                <div>{followings}</div>
             </div>
         </div>
     </div>

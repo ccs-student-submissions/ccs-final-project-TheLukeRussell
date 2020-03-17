@@ -12,5 +12,6 @@ urlpatterns = [
     path('profile/detail/<int:pk>/', views.IndexView.as_view(), name = 'profile-details'),
     path('list/', views.IndexView.as_view(), name = 'profile-list'),
     path('add-event/', views.IndexView.as_view(), name = 'add-event'),
+    path('events/', views.IndexView.as_view(), name = 'events'),
     path('events/<int:pk>/', views.IndexView.as_view(), name = 'event-details'),
 ]

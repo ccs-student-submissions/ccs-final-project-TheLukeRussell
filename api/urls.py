@@ -9,7 +9,6 @@ urlpatterns = [
     path('users/', views.UserListAPIView.as_view()),
     path('users/<int:pk>/', views.UserDetailAPIView.as_view(), name='user-detail'),
     path('profile/', views.ProfileList.as_view(), name='profile'),
-    path('profile/create/', views.UserProfileCreateAPIView.as_view(), name='profile-create'),
     path('profile/<int:pk>/', views.UserProfileRetieveUpdateDestroyAPIView.as_view(), name='profile-update'),
     path('create/', views.UserProfileCreateAPIView.as_view(), name='profile-create'),
     path('rest-auth/', include('rest_auth.urls')),

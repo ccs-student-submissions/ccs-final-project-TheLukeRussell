@@ -22,19 +22,10 @@ class ProfileList extends Component {
             .catch(error => {
             console.log(error);
             });
-
-        // axios.get(`/api/v1/accounts/`, )
-        //     .then(res => {
-        //     // console.log('res', res.data);
-        //     this.setState({users: res.data});
-        //     })
-        //     .catch(error => {
-        //     console.log(error);
-        // });
         }  
 
     render() {
-        console.log(this.state);
+        // console.log(this.state);
         const profiles = this.state.profiles.map(profile => (
                 <Card key={profile.id} className='mb-5 col-sm-9 col-md-7 col-lg-5 col-xl-3' id='profile-card'>
                 <Card.Img variant="top" src={profile.avatar} />
@@ -44,7 +35,7 @@ class ProfileList extends Component {
                 <Card.Title>About: </Card.Title>
                     <Card.Text>{profile.about}</Card.Text>
                 </Card.Body>
-                <Link to={`/profile/detail/${profile.id}/`}>
+                <Link to={`/profile/detail/${profile.created_by.id}/`}>
                 <button className='btn btn-dark mr-2'>View Profile</button>
                 </Link>
                 </Card>

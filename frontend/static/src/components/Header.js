@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import { Nav, Navbar} from 'react-bootstrap';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
@@ -12,7 +11,6 @@ class Header extends Component {
     state = {
         move: false,
         profiles: []
-
     }
 
     logout = () => {
@@ -30,22 +28,17 @@ class Header extends Component {
     return (
         <React.Fragment>
         {localStorage.getItem('my-app-user') ? (
-            <Navbar>
-                <Nav>
-                    <li id='header-item'><Link to="/profile/detail/5">Profile</Link></li>
-                    <li id='header-item'><Link to="/list/">Connect</Link></li>
-                    <li id='header-item'><Link to="/events/">Events</Link></li>
-                    <li id='header-item'><Link to="/add-event">Add Event</Link></li>
-                    <li id='header-item'><button className='btn btn-link' onClick={this.logout}>Logout</button></li>
-                </Nav>
-            </Navbar>
+            <div id='navbar' className="row no-gutters">
+                <li className='col-md-3' id='header-item'><Link to="/profile/detail/5">Profile</Link></li>
+                <li className='col-md-3' id='header-item'><Link to="/list/">Connect</Link></li>
+                <li className='col-md-3' id='header-item'><Link to="/events/">Events</Link></li>
+                <li className='col-md-3' id='header-item'><button className='btn btn-link' onClick={this.logout}>Logout</button></li>
+            </div>
         ) : (
-            <Navbar>
-                <Nav>
-                    <li id='header-item'><Link to="/login">Login</Link></li>
-                    <li id='header-item'><Link to="/signup">Signup</Link></li>
-                </Nav>
-            </Navbar>
+            <div id='navbar' className="row no-gutters">
+                <li id='header-item'><Link to="/login">Login</Link></li>
+                <li id='header-item'><Link to="/signup">Signup</Link></li>
+            </div>
         )}
         </React.Fragment>
     );

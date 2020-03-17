@@ -12,7 +12,7 @@ axios.defaults.headers.common["Authorization"] = localStorage.getItem('my-app-us
 class EventDetail extends Component {
 
     state = {
-
+        attendees: [],
     }
 
     componentDidMount() {
@@ -28,31 +28,39 @@ class EventDetail extends Component {
 }
 
 render() {
-    // const attendees = this.state.attendees.map(attendee => (
-    //     <div>{attendee.id}</div>
-    // ))
-    console.log(this.state.user);
+    const attendees = this.state.attendees.map(attendee => (
+        <div key={attendee.id}>{attendee.username}</div>
+    ))
     return(
         <React.Fragment>
         <Header />
-        <Card key={this.state.id} className='col-md-6 mb-5' id='event-card'>
-                <Card.Img variant="top" src={this.state.image} />
-                <Card.Body>
-                <Card.Title>Title: </Card.Title>
-                    <Card.Text>{this.state.title}</Card.Text>
-                <Card.Title>Description: </Card.Title>
-                    <Card.Text>{this.state.description}</Card.Text>
-                <Card.Title>Type: </Card.Title>
-                    <Card.Text>{this.state.category}</Card.Text>
-                <Card.Title>Location: </Card.Title>
-                    <Card.Text>{this.state.location}</Card.Text>
-                <Card.Title>Who Made It: </Card.Title>
-                    <Card.Text></Card.Text>
-                <Card.Title>Who's coming?!: </Card.Title>
-                    <Card.Text></Card.Text>
-                </Card.Body>
+        <h1 className='mt-5'>Details of the Event!</h1>
+        <div id='event-detail' className="row no-gutters">
+        <div className="col-1"></div>
+            <div className="col-md-6">
+                <Card key={this.state.id}>
+                    <Card.Img variant="top" src={this.state.image} />
+                    <Card.Body>
+                    <Card.Title><i>Title: </i></Card.Title>
+                        <Card.Text><strong>{this.state.title}</strong></Card.Text>
+                    <Card.Title><i>Description: </i></Card.Title>
+                        <Card.Text><strong>{this.state.description}</strong></Card.Text>
+                    <Card.Title><i>Type: </i></Card.Title>
+                        <Card.Text><strong>{this.state.category}</strong></Card.Text>
+                    <Card.Title><i>Location: </i></Card.Title>
+                        <Card.Text><strong>{this.state.location}</strong></Card.Text>
+                    <Card.Title><i>Who Made It: </i></Card.Title>
+                    {this.state.created_by && <Card.Text>{this.state.created_by.username}</Card.Text>}
+                    <Card.Title><i>Who's coming?!: </i></Card.Title>
+                        <Card.Text>{attendees}</Card.Text>
+                    </Card.Body>
                 </Card>
+            </div>
+            <div className="col-md-2"></div>
+            <div className="col-md mr-5">
                 <Comment />
+            </div>
+        </div>
         </React.Fragment>
     )
 }

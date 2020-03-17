@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import Header from './Header'
 
 class CommentBox extends Component {
 
@@ -25,7 +23,7 @@ class CommentBox extends Component {
         <div className="comment-box">
             <h2>Join the Discussion!</h2>
             <CommentForm addComment={this.addComment.bind(this)}/>
-            <button id="comment-reveal" onClick={this.handleClick.bind(this)}>
+            <button className='btn btn-danger' id="comment-reveal" onClick={this.handleClick.bind(this)}>
             {buttonText}
             </button>
             <h3>Comments</h3>
@@ -83,7 +81,7 @@ class CommentBox extends Component {
             <textarea placeholder="Comment" rows="4" required ref={(textarea) => this.body = textarea}></textarea>
             </div>
             <div className="comment-form-actions">
-            <button type="submit">Post Comment</button>
+            <button className='btn btn-dark' type="submit">Post Comment</button>
             </div>
         </form>
         );

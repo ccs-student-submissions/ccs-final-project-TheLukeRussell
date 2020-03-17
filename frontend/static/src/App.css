@@ -146,31 +146,33 @@ a.nav-link:hover {
 }
 
 .login, .register {
-  /* background-color: #fff; */
   padding: 30px;
 }
 
 #header-item {
-  margin: 0 auto;
-  font-size: 22px;
   padding: 10px;
   color: white;
+  text-align: center;
 }
 
-.navbar {
-  display: inline-block;
+#navbar {
   border-bottom: .4pt solid white;
   border-right: .4pt solid white;
   background-image: url("https://www.transparenttextures.com/patterns/green-dust-and-scratches.png");
   background-color: #060711;
   box-shadow: 0px 0px 30px 0px #4c4ecf;
-  border-radius: 0px 0px 10px 0px;
+  border-radius: 0px 0px 10px 10px;
 }
+
 
 #header-item a, #header-item button {
   color: #fff;
-  font-size: 20px;
+  font-size: 24px;
   vertical-align: middle;
+}
+
+li {
+  list-style: none;
 }
 
 #header-item a:hover, #header-item button:hover {
@@ -270,24 +272,20 @@ p {
 
 .comment-box {
   max-width: 37.5rem;
-  color: #fff;
+  background-image: url("https://www.transparenttextures.com/patterns/green-dust-and-scratches.png");
+  background-color: #000;
+  border: #4c4ecf solid 2pt;
   text-align: center;
-  margin: 0 auto;
-  background-color: #909090;
   border-radius: 0.875rem;
-  padding: 0.2rem 1rem 2rem;
+  padding: 20px;
+  margin-bottom: 10px;
 }
 .comment-form {
-  background-color: #fff;
+  background-image: url("https://www.transparenttextures.com/patterns/green-dust-and-scratches.png");
+  background-color: #000;
   border-radius: 0.25rem;
   margin-bottom: 2rem;
   padding: 1rem;  
-}
-
-#comment-reveal {
-  float: right;
-  background-color: $nc-blue;
-  color: #fff;
 }
 
 .comment-body {
@@ -296,4 +294,8 @@ p {
 }
 .comment-footer {
   margin-bottom: 1rem;
+}
+
+#event-detail {
+  margin-top: 50px;
 }

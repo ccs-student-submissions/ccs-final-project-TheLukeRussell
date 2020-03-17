@@ -92,6 +92,7 @@ class EventList extends Component {
             <React.Fragment>
             <Header />
             <h1>Events List</h1>
+            <Link to={`/add-event/`}><button className='btn btn-success'>Add Event</button></Link>
             <div>
             {events}
             </div>
