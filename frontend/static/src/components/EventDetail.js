@@ -36,7 +36,6 @@ render() {
         <Header />
         <h1 className='mt-5'>Details of the Event!</h1>
         <div id='event-detail' className="row no-gutters">
-        <div className="col-1"></div>
             <div className="col-md-6">
                 <Card key={this.state.id}>
                     <Card.Img variant="top" src={this.state.image} />
@@ -56,8 +55,7 @@ render() {
                     </Card.Body>
                 </Card>
             </div>
-            <div className="col-md-2"></div>
-            <div className="col-md mr-5">
+            <div className="col-md">
                 <Comment />
             </div>
         </div>

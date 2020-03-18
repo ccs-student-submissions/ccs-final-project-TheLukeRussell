@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import SpotifyContainer from './SpotifyContainer';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { library } from '@fortawesome/fontawesome-svg-core'
 // import { fab } from '@fortawesome/free-brands-svg-icons'
@@ -76,7 +77,7 @@ class ProfileCreate extends Component {
     formData.append('about', this.state.about);
     formData.append('instruments', JSON.stringify(instruments));
     console.log(instruments);
-    axios.post(`/api/v1/profile/create/`, formData, {
+    axios.post(`/api/v1/create/`, formData, {
         headers : {
         'content-type': 'multipart/form-data',
         'Authorization': `Token ${JSON.parse(localStorage.getItem('my-app-user')).key}`
@@ -92,7 +93,7 @@ class ProfileCreate extends Component {
     }
 
     componentDidMount() {
-        axios.get('/api/v1/profile/create/')
+        axios.get('/api/v1/create/')
     .then(res => {
         console.log(res);
         this.setState({profile: res.data});
@@ -132,13 +133,7 @@ class ProfileCreate extends Component {
             <input type='file' name='avatar' onChange={this.handleAvatarChange}/>
             )}
             <h4 className='mt-5'>Search for your favorite artist!</h4>
-            <div className="search-container col-md-6">
-                <div><img id='spotify-image' src="/static/public/Spotify_Logo_RGB_Green.png" alt=""/></div>
-                {/* <form action="/action_page.php"> */}
-                    <input className='search-bar' type="text" placeholder="Search for Artist or Track.." name="search"/>
-                    <button className='btn btn--login' type="submit">Submit</button>
-                {/* </form> */}
-            </div>
+            <SpotifyContainer />
             <button className='btn btn-primary mb-5'>Save Profile</button>
             </form>
         </section>

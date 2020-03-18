@@ -150,7 +150,7 @@ a.nav-link:hover {
 }
 
 #header-item {
-  padding: 10px;
+  padding: 20px;
   color: white;
   text-align: center;
 }
@@ -250,6 +250,7 @@ iframe {
   border-radius: 500px;
   text-overflow: ellipsis;
   width: 30vw;
+  min-width: 250px;
   font-size: 16px;
 }
 .search-container {
@@ -262,7 +263,7 @@ iframe {
 }
 
 #spotify-image {
-  width: 15%;
+  width: 200px;
   padding: 16px;
 }
 

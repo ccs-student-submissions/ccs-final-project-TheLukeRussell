@@ -12,6 +12,7 @@ import ProfileList from './components/ProfileList';
 import ProfileCreate from './components/ProfileCreate';
 import ProfileDetail from './components/ProfileDetail';
 import EventDetail from './components/EventDetail';
+import SpotifyContainer from './components/SpotifyContainer';
 import EventList from './components/EventList';
 import EventForm from './components/EventForm';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -31,6 +32,7 @@ ReactDOM.render(
                     <Route exact path='/events/:id/' component={EventDetail}></Route>
                     <Route exact path='/' component={Home}></Route>
                     <Route path='/add-event' component={EventForm}></Route>
+                    <Route path='/spotify' component={SpotifyContainer}></Route>
                     <Route path='/list' component={ProfileList}></Route>
                     <Route exact path='/create/' component={ProfileCreate}></Route>
                     <Route exact path='/profile/detail/:id/' component={ProfileDetail}></Route>
