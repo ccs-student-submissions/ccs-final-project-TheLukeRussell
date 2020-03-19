@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SpotifyArtist from './SpotifyArtist';
+// import SpotifyArtist from './SpotifyArtist';
 import Spotify from './Spotify';
 
 class App extends Component {
@@ -30,24 +30,6 @@ class App extends Component {
     }
     }
 
-    loadTracks(artistId) {
-    Spotify.getTracks(artistId)
-        .then((json) => {
-        this.setState({
-            tracks: json.tracks
-        });
-        });
-    }
-
-    updateProfile(artistJSON) {
-    const artist = artistJSON.artists.items[0];
-    this.setState({
-        artist: artist, 
-        errorMessage: ''
-    });
-    return artistJSON;
-    }
-
     displayErrorMessage(message) {
     this.setState({
         errorMessage: message
@@ -66,7 +48,7 @@ class App extends Component {
             <button className="btn btn--login">Submit</button>
         </form>
         <div>{this.state.errorMessage}</div>
-        <div id="Profile"><SpotifyArtist artist={this.state.artist}/></div>
+        {/* <div id="Profile"><SpotifyArtist artist={this.state.artist}/></div> */}
         </div>
         </React.Fragment>
     );
