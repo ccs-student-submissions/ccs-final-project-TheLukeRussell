@@ -41,17 +41,17 @@
 //     render() {
 //         console.log(this.state);
 //     return (
-//         <React.Fragment>
-//         <div className="search-container col-md-6">
-//         <div><img src="/static/public/Spotify_Logo_RGB_Green.png" alt="" id="spotify-image"/></div>
-//         <form onSubmit={ (e) => { e.preventDefault(); this.search(); } }>
-//             <input className="search-bar" type="text" placeholder="Search for an artist" value={this.state.query} onChange={event => {this.setState({query: event.target.value }) }} />
-//             <button className="btn btn--login">Submit</button>
-//         </form>
-//         <div>{this.state.errorMessage}</div>
-//         {/* <div id="Profile"><SpotifyArtist artist={this.state.artist}/></div> */}
-//         </div>
-//         </React.Fragment>
+        // <React.Fragment>
+        // <div className="search-container col-md-6">
+        // <div><img src="/static/public/Spotify_Logo_RGB_Green.png" alt="" id="spotify-image"/></div>
+        // <form onSubmit={ (e) => { e.preventDefault(); this.search(); } }>
+        //     <input className="search-bar" type="text" placeholder="Search for an artist" value={this.state.query} onChange={event => {this.setState({query: event.target.value }) }} />
+        //     <button className="btn btn--login">Submit</button>
+        // </form>
+        // <div>{this.state.errorMessage}</div>
+        // {/* <div id="Profile"><SpotifyArtist artist={this.state.artist}/></div> */}
+        // </div>
+        // </React.Fragment>
 //     );
 //     }
 // }

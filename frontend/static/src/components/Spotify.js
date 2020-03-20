@@ -10,7 +10,10 @@ const spotifyApi = new SpotifyWebApi();
 class Spotify extends Component{
 
   state = {
-    token: ''
+    token: '',
+    artists: [],
+    artist_search: []
+
   }
     componentDidMount() {
       // convert json to url params
@@ -35,19 +38,35 @@ class Spotify extends Component{
     })
     .catch(err => console.log('error', err))
   }
-  
-        render() {
-          spotifyApi.setAccessToken(this.state.token);
+
+  searchArtist = () => {
+    spotifyApi.setAccessToken(this.state.token);
           // console.log(this.state.token);
-            spotifyApi.searchArtists('kanye', {limit: 10})
-              .then(function(data) {
+            spotifyApi.searchArtists('John', {limit: 10})
+              .then(data => {
                 console.log('Search Results', data.artists.items);
+                this.setState({artist_search: data.artists.items})
               }, function(err) {
                 console.error(err);
               });
-            
+  }
+
+        render() {
+          let artist_search = this.state.artist_search.map(artist => 
+            <div key={artist.id}>
+              <div>Artist Name: {artist.name}</div>
+              <div>Artist ID: {artist.id}</div>
+              <div>Artist Followers: {artist.followers.total}</div>
+              <img src={artist.images[0].url} alt={`profile for ${artist.name}`}></img>
+              <br/><br/><br/><br/>              
+            </div>);
+
             return(
-                    <h1>TEST PAGE</h1>
+              <div className="spotify-test">
+                <h1>SPOTIFY TEST</h1>
+                <button onClick={() => this.searchArtist()} className='btn btn-danger'>Run</button>
+                <h3>{artist_search}</h3>
+              </div>
             )
         }
     }

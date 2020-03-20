@@ -300,3 +300,11 @@ p {
 #event-detail {
   margin-top: 50px;
 }
+
+.spotify-test {
+  text-align: center;
+}
+
+.spotify-test img {
+  width: 10%
+}
