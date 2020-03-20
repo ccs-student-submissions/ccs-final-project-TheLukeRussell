@@ -10,7 +10,7 @@ const spotifyApi = new SpotifyWebApi();
 class Spotify extends Component{
 
   state = {
-    token: null
+    token: ''
   }
     componentDidMount() {
       // convert json to url params
@@ -37,14 +37,15 @@ class Spotify extends Component{
   }
   
         render() {
-          // console.log(this.state);
-            spotifyApi.setAccessToken(this.state.access_token);
-            spotifyApi.getArtist('3XyvBNwsPBVhCXoYLNNQ84')
-            .then(function(res) {
-                // console.log('Artist information', res);
-            }, function(err) {
+          spotifyApi.setAccessToken(this.state.token);
+          // console.log(this.state.token);
+            spotifyApi.searchArtists('kanye', {limit: 10})
+              .then(function(data) {
+                console.log('Search Results', data.artists.items);
+              }, function(err) {
                 console.error(err);
-            });
+              });
+            
             return(
                     <h1>TEST PAGE</h1>
             )
