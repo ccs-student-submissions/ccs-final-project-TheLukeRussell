@@ -42,7 +42,7 @@ class Spotify extends Component{
   searchArtist = () => {
     spotifyApi.setAccessToken(this.state.token);
           // console.log(this.state.token);
-            spotifyApi.searchArtists('John', {limit: 10})
+            spotifyApi.searchArtists(this.props.query)
               .then(data => {
                 console.log('Search Results', data.artists.items);
                 this.setState({artist_search: data.artists.items})
@@ -63,9 +63,8 @@ class Spotify extends Component{
 
             return(
               <div className="spotify-test">
-                <h1>SPOTIFY TEST</h1>
-                <button onClick={() => this.searchArtist()} className='btn btn-danger'>Run</button>
-                <h3>{artist_search}</h3>
+                <button onClick={() => this.searchArtist()} className='btn btn--login m-3'>Run</button>
+                <h3 className='p-0 m-0'>{artist_search}</h3>
               </div>
             )
         }

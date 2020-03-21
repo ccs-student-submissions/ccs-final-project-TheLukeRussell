@@ -1,12 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import SpotifyContainer from './SpotifyContainer';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { library } from '@fortawesome/fontawesome-svg-core'
-// import { fab } from '@fortawesome/free-brands-svg-icons'
-// import { faSearch } from '@fortawesome/free-solid-svg-icons'
-
-// library.add(fab, faSearch)
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -119,21 +113,21 @@ class ProfileCreate extends Component {
             <h5 className='mt-5'>What Instruments Do You Play?</h5>
                 <div className="row no-gutters form-check">
                     <input type="checkbox" checked={this.state.guitar} name='guitar' value={this.state.guitar} onChange={this.handleCheckboxChange} />
-                    <label htmlFor="guitar">Guitar</label>
+                    <label htmlFor="guitar" className='ml-1 mr-5'>Guitar</label>
                     <input type="checkbox" checked={this.state.piano} name='piano' value={this.state.piano} onChange={this.handleCheckboxChange} />
-                    <label htmlFor="piano">Piano</label>
+                    <label htmlFor="piano" className='ml-1 mr-5'>Piano</label>
 
                     <input type="checkbox" checked={this.state.drums} name='drums' value={this.state.drums} onChange={this.handleCheckboxChange} />
-                    <label htmlFor="drums">Drums</label>
+                    <label htmlFor="drums" className='ml-1 mr-5'>Drums</label>
                 </div>
             <h5 className='mt-5'>Choose Your Profile Pic!</h5>
             {this.state.avatar ? (
             <img src={this.state.preview} alt='preview'/>
             ):(
-            <input type='file' name='avatar' onChange={this.handleAvatarChange}/>
+            <input className='col-md-3 offset-1' type='file' name='avatar' onChange={this.handleAvatarChange}/>
             )}
             <h4 className='mt-5'>Search for your favorite artist!</h4>
-            <SpotifyContainer />
+            <SpotifyContainer/>
             <button className='btn btn-primary mb-5'>Save Profile</button>
             </form>
         </section>
