@@ -89,7 +89,7 @@ class ProfileCreate extends Component {
     componentDidMount() {
         axios.get('/api/v1/create/')
     .then(res => {
-        console.log(res);
+        // console.log(res);
         this.setState({profile: res.data});
     })
     .catch(error => {
@@ -127,7 +127,7 @@ class ProfileCreate extends Component {
             <input className='col-md-3 offset-1' type='file' name='avatar' onChange={this.handleAvatarChange}/>
             )}
             <h4 className='mt-5'>Search for your favorite artist!</h4>
-            <SpotifyContainer/>
+            <SpotifyContainer />
             <button className='btn btn-primary mb-5'>Save Profile</button>
             </form>
         </section>

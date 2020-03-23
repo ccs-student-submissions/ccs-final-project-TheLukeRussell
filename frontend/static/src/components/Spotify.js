@@ -13,6 +13,7 @@ class Spotify extends Component{
     token: '',
     artists: [],
     artist_search: [],
+    uri: '',
     // errorMessage: '',
 
   }
@@ -52,30 +53,36 @@ class Spotify extends Component{
                 console.error(err);
               });
   }
-
-
     // displayErrorMessage(message) {
     //   this.setState({
     //     errorMessage: message
     //   });
     //   }
-    artistSelect(event) {
-      console.log(event.target.getAttribute('id'))
+
+    artistSelect(e) {
+      console.log(e.target.getAttribute('value'))
+        this.setState({uri: e.target.getAttribute('value')});
   }
 
         render() {
           let artist_search = this.state.artist_search.map(artist => 
             <div key={artist.id}>
               <div className="row no-gutters">
-              <div className="col-xl-8">
-              <div>{artist.name}</div>
-              {/* <div>{artist.id}</div> */}
-              <div>{artist.followers.total} followers</div>
-              <button id={artist.id} onClick={this.artistSelect} className='btn btn--login' type='button'>Select This Artist</button>
-              </div>
-              <div className="col-xl-4 mt-2">
-              <img src={ artist.images[0] ? artist.images[0].url : 'https://lh3.googleusercontent.com/proxy/ggw1FWSN-Va4aun69O0z7eDHcut-0mwx3M3HgaVTgpbtyJwEmRaiI6fh8x7LaRCuPCFrmDO_rCrFFTU6pf6AT6TE462AyU-tJEohIkdrJJYQqes9_KJmfizByAVdkZbqspdnh2YnPCSoAXULAw' } alt={`profile for ${artist.name}`}></img>
-              </div>
+                <div className="col-xl-8">
+                  <div className="row no-gutters">
+                    <h2 className='col-md-12'><a href={artist.external_urls.spotify} target="_blank">{artist.name}</a></h2>
+                    <h4 className='col-md-12'>{artist.followers.total.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} followers</h4>
+                    </div>
+                    {/* <div>{artist.id}</div> */}
+                    <div className="row no-gutters">
+                    <button value={artist.id} onClick={this.artistSelect} className='btn btn--login m-auto' type='button'>Select This Artist</button>
+                  </div>
+                </div>
+                <div className="col-xl-4 mt-2">
+                  <div className="row no-gutters">
+                    <a href={artist.external_urls.spotify} target="_blank"><img className='col-md-12' src={ artist.images[0] ? artist.images[0].url : 'https://lh3.googleusercontent.com/proxy/ggw1FWSN-Va4aun69O0z7eDHcut-0mwx3M3HgaVTgpbtyJwEmRaiI6fh8x7LaRCuPCFrmDO_rCrFFTU6pf6AT6TE462AyU-tJEohIkdrJJYQqes9_KJmfizByAVdkZbqspdnh2YnPCSoAXULAw' } alt={`profile for ${artist.name}`}></img></a>
+                  </div>
+                </div>
               </div> 
               <br/><br/><br/><br/>            
             </div>);
