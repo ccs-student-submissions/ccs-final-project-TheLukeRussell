@@ -70,7 +70,7 @@ class ProfileCreate extends Component {
     formData.append('avatar', this.state.avatar);
     formData.append('about', this.state.about);
     formData.append('instruments', JSON.stringify(instruments));
-    console.log(instruments);
+    // console.log(instruments);
     axios.post(`/api/v1/create/`, formData, {
         headers : {
         'content-type': 'multipart/form-data',

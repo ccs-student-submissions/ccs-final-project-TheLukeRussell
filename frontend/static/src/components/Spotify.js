@@ -12,7 +12,8 @@ class Spotify extends Component{
   state = {
     token: '',
     artists: [],
-    artist_search: []
+    artist_search: [],
+    // errorMessage: '',
 
   }
     componentDidMount() {
@@ -42,30 +43,49 @@ class Spotify extends Component{
   searchArtist = () => {
     spotifyApi.setAccessToken(this.state.token);
           // console.log(this.state.token);
-            spotifyApi.searchArtists(this.props.query)
+            spotifyApi.searchArtists(this.props.query, {limit:15})
               .then(data => {
                 console.log('Search Results', data.artists.items);
                 this.setState({artist_search: data.artists.items})
               }, function(err) {
+                // this.displayErrorMessage('Please enter an Aritst or Band name')
                 console.error(err);
               });
+  }
+
+
+    // displayErrorMessage(message) {
+    //   this.setState({
+    //     errorMessage: message
+    //   });
+    //   }
+    artistSelect(event) {
+      console.log(event.target.getAttribute('id'))
   }
 
         render() {
           let artist_search = this.state.artist_search.map(artist => 
             <div key={artist.id}>
-              <div>Artist Name: {artist.name}</div>
-              <div>Artist ID: {artist.id}</div>
-              <div>Artist Followers: {artist.followers.total}</div>
-              <img src={artist.images[0].url} alt={`profile for ${artist.name}`}></img>
-              <br/><br/><br/><br/>              
+              <div className="row no-gutters">
+              <div className="col-xl-8">
+              <div>{artist.name}</div>
+              {/* <div>{artist.id}</div> */}
+              <div>{artist.followers.total} followers</div>
+              <button id={artist.id} onClick={this.artistSelect} className='btn btn--login' type='button'>Select This Artist</button>
+              </div>
+              <div className="col-xl-4 mt-2">
+              <img src={ artist.images[0] ? artist.images[0].url : 'https://lh3.googleusercontent.com/proxy/ggw1FWSN-Va4aun69O0z7eDHcut-0mwx3M3HgaVTgpbtyJwEmRaiI6fh8x7LaRCuPCFrmDO_rCrFFTU6pf6AT6TE462AyU-tJEohIkdrJJYQqes9_KJmfizByAVdkZbqspdnh2YnPCSoAXULAw' } alt={`profile for ${artist.name}`}></img>
+              </div>
+              </div> 
+              <br/><br/><br/><br/>            
             </div>);
 
             return(
               <div className="spotify-test">
-                <button onClick={() => this.searchArtist()} className='btn btn--login m-3'>Run</button>
-                <h3 className='p-0 m-0'>{artist_search}</h3>
-              </div>
+                <button type='button' onClick={() => this.searchArtist()} className='btn btn--login m-3'>Run</button>
+                {/* <div>{this.state.errorMessage}</div> */}
+                <div className='p-0 m-0'>{artist_search}</div>
+                </div>
             )
         }
     }
