@@ -61,7 +61,7 @@ class Spotify extends Component{
 
     artistSelect(e) {
       console.log(e.target.getAttribute('value'))
-        this.setState({uri: e.target.getAttribute('value')});
+        // this.setState({uri: e.target.getAttribute('value')});
   }
 
         render() {
@@ -75,7 +75,7 @@ class Spotify extends Component{
                     </div>
                     {/* <div>{artist.id}</div> */}
                     <div className="row no-gutters">
-                    <button value={artist.id} onClick={this.artistSelect} className='btn btn--login m-auto' type='button'>Select This Artist</button>
+                    <button value={artist.id} onClick={(e) => this.props.selectFavArtist(artist.id)} className='btn btn--login m-auto' type='button'>Select This Artist</button>
                   </div>
                 </div>
                 <div className="col-xl-4 mt-2">

@@ -19,7 +19,13 @@ class ProfileCreate extends Component {
         guitar: false,
         piano: false,
         drums: false,
+        uri: '',
     };
+
+    selectFavArtist = (uri) => {
+        console.log(uri)
+        this.setState({uri})
+    }
 
     handleCheckboxChange = (e) => {
     this.setState({[e.target.name]: e.target.checked});
@@ -127,7 +133,7 @@ class ProfileCreate extends Component {
             <input className='col-md-3 offset-1' type='file' name='avatar' onChange={this.handleAvatarChange}/>
             )}
             <h4 className='mt-5'>Search for your favorite artist!</h4>
-            <SpotifyContainer />
+            <SpotifyContainer selectFavArtist={this.selectFavArtist}/>
             <button className='btn btn-primary mb-5'>Save Profile</button>
             </form>
         </section>

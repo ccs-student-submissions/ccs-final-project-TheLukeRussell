@@ -15,7 +15,7 @@ class App extends Component {
         <div className="search-container col-md-6">
         <div><img src="/static/public/Spotify_Logo_RGB_Green.png" alt="" id="spotify-image"/></div>
         <input className="search-bar" type="text" placeholder="Search for an artist" value={this.state.query} onChange={event => {this.setState({query: event.target.value }) }} />
-        <Spotify query={this.state.query}/>
+        <Spotify selectFavArtist={this.props.selectFavArtist} query={this.state.query}/>
         </div>
         </React.Fragment>
         );
