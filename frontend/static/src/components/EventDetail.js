@@ -3,6 +3,7 @@ import axios from 'axios';
 import Header from './Header'
 import { Card } from "react-bootstrap";
 import Comment from './Comment'
+import {motion} from "framer-motion"
 
 
 axios.defaults.xsrfCookieName = 'csrftoken';
@@ -34,6 +35,7 @@ render() {
     return(
         <React.Fragment>
         <Header />
+        <motion.div exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} className="app">
         <h1 className='mt-5'>Details of the Event!</h1>
         <div id='event-detail' className="row no-gutters">
             <div className="col-md-6">
@@ -59,6 +61,7 @@ render() {
                 <Comment />
             </div>
         </div>
+        </motion.div>
         </React.Fragment>
     )
 }

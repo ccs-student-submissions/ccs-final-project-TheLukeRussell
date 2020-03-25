@@ -4,6 +4,7 @@ import Header from './Header'
 import UpdateEventForm from './UpdateEventForm'
 import { Card, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
+import {motion} from "framer-motion"
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSFRToken'
@@ -91,11 +92,13 @@ class EventList extends Component {
         return(
             <React.Fragment>
             <Header />
+            <motion.div exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} className="app">
             <h1>Events List</h1>
             <Link to={`/add-event/`}><button className='btn btn-success'>Add Event</button></Link>
             <div>
             {events}
             </div>
+            </motion.div>
             </React.Fragment>
         )
     }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import SpotifyContainer from './SpotifyContainer';
+import {motion} from "framer-motion"
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -106,7 +107,7 @@ class ProfileCreate extends Component {
     render(){
         console.log(this.state)
     return (
-        <React.Fragment>
+        <motion.div exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} className="app">
             <section>
             <form id='profile-create' onSubmit={this.handleSubmit}>
             <h1 className='mb-5'>Create Your Profile</h1>
@@ -139,7 +140,7 @@ class ProfileCreate extends Component {
             <button className='btn btn-primary mb-5'>Save Profile</button>
             </form>
         </section>
-        </React.Fragment>
+        </motion.div>
     )
     }
 }

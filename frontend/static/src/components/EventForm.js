@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Header from './Header'
+import {motion} from "framer-motion"
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSFRToken';
@@ -63,7 +64,9 @@ class EventForm extends Component {
 
         return(
             <React.Fragment>
-            <Header />
+                <Header />
+            <motion.div exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} className="app">
+            
             <div className='mt-5 mb-5 card col-xl-6 col-11'>
                 <h2 className='p-3'>Add An Event!</h2>
             <form id='event-form' className='mt-5' onSubmit={this.handleSubmit}>
@@ -100,6 +103,7 @@ class EventForm extends Component {
                 <button className='btn btn-primary mt-5'>Save Event</button>
             </form>
             </div>
+            </motion.div>
             </React.Fragment>
         )
     }

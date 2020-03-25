@@ -44,11 +44,14 @@ class InstrumentRetrieveAPIView(generics.RetrieveAPIView):
 #     queryset = UserProfile.objects.all()
 #     serializer_class = UserProfileSerializer
 
-#     def get_queryset(self):
-#         user = self.request.user
-#         return UserProfile.objects.filter(created_by=user.id)
+    # def get_queryset(self):
+    #     user = self.request.user
+    #     return UserProfile.objects.filter(created_by=user.id)
 
 class ConnectionListCreateAPIView(generics.ListCreateAPIView):
     queryset = Connection.objects.all()
     serializer_class = ConnectionSerializer
-    
+
+    def perform_create(self, serializer):
+        following = get_object_or_404(User, pk=self.request.data['following'])
+        serializer.save(user=self.request.user, following=following);

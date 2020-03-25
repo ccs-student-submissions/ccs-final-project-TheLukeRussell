@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
+import {motion} from "framer-motion"
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -30,10 +31,10 @@ class Header extends Component {
         <React.Fragment>
         {localStorage.getItem('my-app-user') ? (
             <div id='navbar' className="row no-gutters">
-                <li className='col-md-3' id='header-item'><Link to="/profile/detail/5">Profile</Link></li>
-                <li className='col-md-3' id='header-item'><Link to="/list/">Connect</Link></li>
-                <li className='col-md-3' id='header-item'><Link to="/events/">Events</Link></li>
-                <li className='col-md-3' id='header-item'><button className='btn btn-link' onClick={this.logout}>Logout</button></li>
+                <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md-3' id='header-item'><Link to="/profile/detail/5">Profile</Link></motion.li>
+                <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md-3' id='header-item'><Link to="/list/">Connect</Link></motion.li>
+                <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md-3' id='header-item'><Link to="/events/">Events</Link></motion.li>
+                <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md-3' id='header-item'><button className='btn btn-link' onClick={this.logout}>Logout</button></motion.li>
             </div>
         ) : (
             <div id='navbar' className="row no-gutters">

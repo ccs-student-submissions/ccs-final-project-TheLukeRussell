@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Header from './Header'
+import {motion} from "framer-motion"
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -27,21 +28,10 @@ class ProfileDetail extends Component {
 }
     handleFollow = (e) => {
         e.preventDefault();
-        let formData = new FormData();
+        
+        let data = {following: this.props.match.params.id}
 
-        formData.append('title', this.state.title);
-        formData.append('location', this.state.location);
-        formData.append('description', this.state.description);
-        formData.append('category', this.state.category);
-        formData.append('image', this.state.image);
-
-
-
-        axios.post('/api/v1/events/', formData, {
-            headers: {
-            'content-type': 'multipart/form-data'
-            }
-        })
+        axios.post(`/api/v1/connections/`, data,)
         .then(res => {
             console.log(res)
         })
@@ -52,10 +42,9 @@ class ProfileDetail extends Component {
     }
 
 render() {
-    // const uri = this.state.uri
     let artistPlay;
     let artistFollow;
- 
+
     if(this.state.profile) {
         artistPlay = `https://open.spotify.com/embed/artist/${this.state.profile.uri}`
         artistFollow = `https://open.spotify.com/follow/1/?uri=spotify:artist:${this.state.profile.uri}&size=detail&theme=dark`
@@ -76,11 +65,12 @@ render() {
     return(
         <React.Fragment>
         <Header />
+        <motion.div exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} className="app">
         <div className="profile-head">
             <h1>Profile</h1>
             {this.state.profile && <img src={this.state.profile.avatar} alt="profile"/>}
             {this.state.profile && <p className='mt-4'>{this.state.profile.name}</p>}
-            <form id='event-form' className='mt-5' onSubmit={this.handleSubmit}>
+            <form id='event-form' className='mt-5' onSubmit={this.handleFollow}>
                 <button className='btn btn-primary'>Follow</button>
             </form>
         </div>
@@ -112,9 +102,10 @@ render() {
     </div>
     <div className="col-md-2">
     <iframe src={artistFollow} title='player' width="300" height="56" scrolling="no" frameBorder="0" allowtransparency="true"></iframe>
-        <iframe src={artistPlay} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <iframe src={artistPlay} title='follow' width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
 </div>
+        </motion.div>
         </React.Fragment>
     )
 }

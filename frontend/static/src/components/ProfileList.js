@@ -3,6 +3,7 @@ import axios from 'axios';
 import Header from './Header'
 import { Card } from "react-bootstrap";
 import { Link } from 'react-router-dom';
+import {motion} from "framer-motion"
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSFRToken'
@@ -43,8 +44,10 @@ class ProfileList extends Component {
         return(
             <React.Fragment>
                 <Header />
+                <motion.div exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} className="app">
             <h1>Profiles List</h1>
             <div>{profiles}</div>
+            </motion.div>
             </React.Fragment>
         )
     }

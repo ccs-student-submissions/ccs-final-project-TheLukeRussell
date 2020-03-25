@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Header from './Header'
 import axios from "axios";
+import {motion} from "framer-motion"
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 
@@ -49,6 +50,8 @@ class UpdateEventForm extends Component{
         return(
             <React.Fragment>
                 <Header />
+            <motion.div exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} className="app">
+
                 <div className='mt-5 card col-xl-6 col-11'>
                 <h2 className='p-3'>Add An Event!</h2>
                 <form id='event-form' className='mt-5' onSubmit={this.handleSubmit}>
@@ -72,19 +75,10 @@ class UpdateEventForm extends Component{
                     <div className="row no-gutters form-group mb-5">
                         <input className='col-md-4 form-control' type="text" name='location' value={this.state.location} onChange={this.handleChange} />
                     </div>
-                {/* <p>Add an Image</p>
-                    <div className="row no-gutters form-group mb-5">
-                        <input className='col-md- m-auto' type="file" name='image' onChange={this.handleImage} />
-                {this.state.image ? (
-                    <img id='preview' src={this.state.preview} alt="preview"/>
-                ) : (
-                    null
-                )
-                }
-                    </div> */}
                 <button className='btn btn-primary mt-5'>Save Event</button>
             </form>
             </div>
+                </motion.div>
                 </React.Fragment>
         )
     }

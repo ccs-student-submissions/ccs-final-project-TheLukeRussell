@@ -1,9 +1,27 @@
 import axios from 'axios';
 import React, { Component } from 'react';
+import {motion} from "framer-motion"
 
 
 axios.defaults.xsrfCookieName = 'csrftoken'
 axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
+
+const pageVariants = {
+    in: {
+        opacity: 1,
+        x:0
+    },
+    out: {
+        opacity: 0,
+        x: "-100%"
+    }
+}
+
+const pageTransition = {
+    type: "tween",
+    ease: "anticipate",
+    duration: 1
+}
 
 class Registration extends Component  {
     state = {
@@ -34,7 +52,7 @@ class Registration extends Component  {
 
     render () {
         return(
-            <div className="app">
+            <motion.div exit="out" animate="in" initial="out" variants={pageVariants} transition={pageTransition} className="app">
             <div id='signup-login' className="row no-gutters">
             <div className='login col-md-2'>
                     <h1>Signup</h1>
@@ -51,7 +69,7 @@ class Registration extends Component  {
                     </form>
             </div>
         </div>
-        </div>
+        </motion.div>
         )
     }
 }

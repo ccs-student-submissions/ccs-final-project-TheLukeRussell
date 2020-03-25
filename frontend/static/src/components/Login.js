@@ -2,10 +2,29 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import { Nav, Navbar} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import {motion} from "framer-motion"
 
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+
+const pageVariants = {
+    in: {
+        opacity: 1,
+        x:0,
+        scale: 1
+    },
+    out: {
+        opacity: 0,
+        x: "-100%",
+        scale: .8
+    }
+}
+const pageTransition = {
+    type: "tween",
+    ease: "anticipate",
+    duration: 1
+}
 
 class Login extends Component  {
     state = {
@@ -34,12 +53,13 @@ class Login extends Component  {
 
     render () {
         return(
-            <div className="app">
-                <Navbar>
+            <React.Fragment>
+            <Navbar>
                 <Nav className="m-auto">
                     <li id='header-item'><Link to="/">Back</Link></li>
                 </Nav>
                 </Navbar>
+            <motion.div exit="out" animate="in" initial="out" transition={pageTransition} variants={pageVariants} className="app">
             <div id='signup-login' className="row no-gutters">
             <div className='login col-md'>
                     <h1>Login</h1>
@@ -54,7 +74,8 @@ class Login extends Component  {
                     </form>
             </div>
         </div>
-        </div>
+        </motion.div>
+        </React.Fragment>
         )
     }
 }
