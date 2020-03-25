@@ -20,7 +20,7 @@ class Header extends Component {
     }
 
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         const { move } = this.state;
     if (move) {
         return <Redirect to='/' push={true} />

@@ -19,7 +19,7 @@ class EventDetail extends Component {
         // console.log(JSON.parse(localStorage.getItem('my-app-user')).key)
         axios.get(`/api/v1/events/${this.props.match.params.id}/`, )
             .then(res => {
-            console.log('res', res.data);
+            // console.log('res', res.data);
             this.setState(res.data);
             })
             .catch(error => {

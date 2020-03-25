@@ -73,6 +73,7 @@ class ProfileCreate extends Component {
     }
 
     formData.append('name', this.state.name);
+    formData.append('uri', this.state.uri);
     formData.append('avatar', this.state.avatar);
     formData.append('about', this.state.about);
     formData.append('instruments', JSON.stringify(instruments));
@@ -103,6 +104,7 @@ class ProfileCreate extends Component {
     });
     }
     render(){
+        console.log(this.state)
     return (
         <React.Fragment>
             <section>

@@ -53,9 +53,15 @@ class ProfileDetail extends Component {
 
 render() {
     // const uri = this.state.uri
-    // const artistPlay = `https://open.spotify.com/embed/artist/${uri}`
-    // const artistFollow = `https://open.spotify.com/follow/1/?uri=spotify:artist:${uri}&size=detail&theme=dark`
-    // console.log(this.state.profile.uri)
+    let artistPlay;
+    let artistFollow;
+ 
+    if(this.state.profile) {
+        artistPlay = `https://open.spotify.com/embed/artist/${this.state.profile.uri}`
+        artistFollow = `https://open.spotify.com/follow/1/?uri=spotify:artist:${this.state.profile.uri}&size=detail&theme=dark`
+    }
+    
+    console.log(this.state)
     // console.log(artistPlay);
     let instruments;
     if (this.state.profile) {
@@ -105,8 +111,8 @@ render() {
         </div>
     </div>
     <div className="col-md-2">
-    {/* <iframe src={artistFollow} title='player' width="300" height="56" scrolling="no" frameBorder="0" allowtransparency="true"></iframe>
-        <iframe src={artistPlay} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe> */}
+    <iframe src={artistFollow} title='player' width="300" height="56" scrolling="no" frameBorder="0" allowtransparency="true"></iframe>
+        <iframe src={artistPlay} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
 </div>
         </React.Fragment>
