@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import {motion} from "framer-motion"
+import { Nav, Navbar} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 axios.defaults.xsrfCookieName = 'csrftoken'
@@ -52,7 +54,14 @@ class Registration extends Component  {
 
     render () {
         return(
-            <motion.div exit="out" animate="in" initial="out" variants={pageVariants} transition={pageTransition} className="app">
+            <React.Fragment>
+                <div className="bg-image"></div>
+            <motion.div exit="out" animate="in" initial="out" variants={pageVariants} transition={pageTransition} className="bg-text">
+            <Navbar>
+                <Nav className="m-auto">
+                    <li id='header-item'><Link to="/">Back</Link></li>
+                </Nav>
+                </Navbar>
             <div id='signup-login' className="row no-gutters">
             <div className='login col-md-2'>
                     <h1>Signup</h1>
@@ -70,6 +79,7 @@ class Registration extends Component  {
             </div>
         </div>
         </motion.div>
+        </React.Fragment>
         )
     }
 }

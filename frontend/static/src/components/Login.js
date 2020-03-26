@@ -54,12 +54,13 @@ class Login extends Component  {
     render () {
         return(
             <React.Fragment>
+                <div className="bg-image"></div>
+            <motion.div exit="out" animate="in" initial="out" transition={pageTransition} variants={pageVariants} className="bg-text">
             <Navbar>
                 <Nav className="m-auto">
                     <li id='header-item'><Link to="/">Back</Link></li>
                 </Nav>
                 </Navbar>
-            <motion.div exit="out" animate="in" initial="out" transition={pageTransition} variants={pageVariants} className="app">
             <div id='signup-login' className="row no-gutters">
             <div className='login col-md'>
                     <h1>Login</h1>

@@ -26,6 +26,14 @@ class EventList extends Component {
             .catch(error => {
                 console.log(error);
             })
+
+        axios.get(`/api/v1/rest-auth/user/`)
+            .then (res => {
+                console.log(res.data);
+            })
+            .catch(error => {
+                console.log(error);
+            })
         }
 
     handleDelete = (event) => {
