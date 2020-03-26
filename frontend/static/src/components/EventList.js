@@ -75,7 +75,7 @@ class EventList extends Component {
     render() {
         console.log(this.state.events);
         const events = this.state.events.map(event => (
-                <Card key={event.id} className='col-md-6 mb-5' id='event-card'>
+                <Card key={event.id} className='col-md-4 mb-5' id='event-card'>
                 <Card.Img variant="top" src={event.image} />
                 <Card.Body>
                     <Card.Text>{event.title}</Card.Text>
@@ -94,8 +94,8 @@ class EventList extends Component {
             <Header />
             <motion.div exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} className="app">
             <h1>Events List</h1>
-            <Link to={`/add-event/`}><button className='btn btn-success'>Add Event</button></Link>
-            <div>
+            <div className="row"><a className='add-event-btn justify-content-center' href='/add-event/' className='btn btn-success m-auto'>Add Event</a></div>
+            <div className='row no-gutters justify-content-center mt-5'>
             {events}
             </div>
             </motion.div>

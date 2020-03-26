@@ -70,7 +70,7 @@ class Spotify extends Component{
               <div className="row no-gutters">
                 <div className="col-xl-8">
                   <div className="row no-gutters">
-                    <h2 className='col-md-12'><a href={artist.external_urls.spotify} target="_blank">{artist.name}</a></h2>
+                    <h2 className='col-md-12'><a href={artist.external_urls.spotify} target="_blank" rel="noopener noreferrer">{artist.name}</a></h2>
                     <h4 className='col-md-12'>{artist.followers.total.toLocaleString(navigator.language, { minimumFractionDigits: 0 })} followers</h4>
                     </div>
                     {/* <div>{artist.id}</div> */}
@@ -80,7 +80,7 @@ class Spotify extends Component{
                 </div>
                 <div className="col-xl-4 mt-2">
                   <div className="row no-gutters">
-                    <a href={artist.external_urls.spotify} target="_blank"><img className='col-md-12' src={ artist.images[0] ? artist.images[0].url : 'https://lh3.googleusercontent.com/proxy/ggw1FWSN-Va4aun69O0z7eDHcut-0mwx3M3HgaVTgpbtyJwEmRaiI6fh8x7LaRCuPCFrmDO_rCrFFTU6pf6AT6TE462AyU-tJEohIkdrJJYQqes9_KJmfizByAVdkZbqspdnh2YnPCSoAXULAw' } alt={`profile for ${artist.name}`}></img></a>
+                    <a href={artist.external_urls.spotify} target="_blank" rel="noopener noreferrer"><img className='col-md-12' src={ artist.images[0] ? artist.images[0].url : 'https://lh3.googleusercontent.com/proxy/ggw1FWSN-Va4aun69O0z7eDHcut-0mwx3M3HgaVTgpbtyJwEmRaiI6fh8x7LaRCuPCFrmDO_rCrFFTU6pf6AT6TE462AyU-tJEohIkdrJJYQqes9_KJmfizByAVdkZbqspdnh2YnPCSoAXULAw' } alt={`profile for ${artist.name}`}></img></a>
                   </div>
                 </div>
               </div> 

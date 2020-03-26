@@ -15,8 +15,8 @@ import EventDetail from './components/EventDetail';
 import Spotify from './components/Spotify';
 import EventList from './components/EventList';
 import EventForm from './components/EventForm';
-import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion} from "framer-motion"
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { AnimatePresence} from "framer-motion"
 import * as serviceWorker from './serviceWorker';
 
 

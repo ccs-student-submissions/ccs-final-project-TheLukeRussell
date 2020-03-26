@@ -70,9 +70,13 @@ render() {
             <h1>Profile</h1>
             {this.state.profile && <img src={this.state.profile.avatar} alt="profile"/>}
             {this.state.profile && <p className='mt-4'>{this.state.profile.name}</p>}
+            {localStorage.getItem('my-app-user') ? (
             <form id='event-form' className='mt-5' onSubmit={this.handleFollow}>
                 <button className='btn btn-primary'>Follow</button>
             </form>
+            ) : (
+            <div>hi</div>
+            )}
         </div>
         <div className="row no-gutters profile-detail">
     <div className="col-md-10">

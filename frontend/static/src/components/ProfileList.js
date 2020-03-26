@@ -28,7 +28,7 @@ class ProfileList extends Component {
     render() {
         // console.log(this.state);
         const profiles = this.state.profiles.map(profile => (
-                <Card key={profile.id} className='mb-5 col-sm-9 col-md-7 col-lg-5 col-xl-3' id='profile-card'>
+                <Card key={profile.id} className='m-5 col-sm-9 col-md-7 col-lg-5 col-xl-3' id='profile-card'>
                 <Card.Img variant="top" src={profile.avatar} />
                 <Card.Body>
                 <Card.Title>Name: </Card.Title>
@@ -46,7 +46,7 @@ class ProfileList extends Component {
                 <Header />
                 <motion.div exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} className="app">
             <h1>Profiles List</h1>
-            <div>{profiles}</div>
+            <div className='profile-list row no-gutters justify-content-center'>{profiles}</div>
             </motion.div>
             </React.Fragment>
         )
