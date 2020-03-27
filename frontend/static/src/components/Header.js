@@ -11,8 +11,17 @@ class Header extends Component {
 
     state = {
         move: false,
-        profiles: []
+        profiles: [],
+        user: '',
     }
+    
+    componentDidMount() {
+        axios.get(`/api/v1/rest-auth/user/`)
+            .then (res => this.setState({user: res.data}))
+            .catch(error => {
+                console.log(error);
+            })
+        }
 
     logout = () => {
         axios.post('/api/v1/rest-auth/logout/');
@@ -21,7 +30,7 @@ class Header extends Component {
     }
 
     render() {
-        // console.log(this.state)
+        console.log(this.state)
         const { move } = this.state;
     if (move) {
         return <Redirect to='/' push={true} />
@@ -31,7 +40,7 @@ class Header extends Component {
         <React.Fragment>
         {localStorage.getItem('my-app-user') ? (
             <div id='navbar' className="row no-gutters">
-                <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md-3' id='header-item'><Link to="/profile/detail/5">Profile</Link></motion.li>
+                <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md-3' id='header-item'><Link to={`/profile/detail/${this.state.user.pk}`}>Profile</Link></motion.li>
                 <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md-3' id='header-item'><Link to="/list/">Connect</Link></motion.li>
                 <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md-3' id='header-item'><Link to="/events/">Events</Link></motion.li>
                 <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md-3' id='header-item'><button className='btn btn-link' onClick={this.logout}>Logout</button></motion.li>

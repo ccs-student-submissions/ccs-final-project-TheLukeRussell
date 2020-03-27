@@ -17,6 +17,7 @@ class EventList extends Component {
         events: [],
         editingEvent: false,
         eventEditing: {},
+        user: '',
     }
 
     componentDidMount() {
@@ -28,9 +29,7 @@ class EventList extends Component {
             })
 
         axios.get(`/api/v1/rest-auth/user/`)
-            .then (res => {
-                console.log(res.data);
-            })
+            .then (res => this.setState({user: res.data}))
             .catch(error => {
                 console.log(error);
             })
@@ -81,7 +80,7 @@ class EventList extends Component {
         
 
     render() {
-        console.log(this.state.events);
+        console.log(this.state);
         const events = this.state.events.map(event => (
                 <Card key={event.id} className='col-md-4 mb-5' id='event-card'>
                 <Card.Img variant="top" src={event.image} />

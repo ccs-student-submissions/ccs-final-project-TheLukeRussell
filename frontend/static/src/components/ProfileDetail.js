@@ -70,13 +70,9 @@ render() {
             <h1>Profile</h1>
             {this.state.profile && <img src={this.state.profile.avatar} alt="profile"/>}
             {this.state.profile && <p className='mt-4'>{this.state.profile.name}</p>}
-            {localStorage.getItem('my-app-user') ? (
             <form id='event-form' className='mt-5' onSubmit={this.handleFollow}>
                 <button className='btn btn-primary'>Follow</button>
             </form>
-            ) : (
-            <div>hi</div>
-            )}
         </div>
         <div className="row no-gutters profile-detail">
     <div className="col-md-10">
@@ -105,7 +101,8 @@ render() {
         </div>
     </div>
     <div className="col-md-2">
-    <iframe src={artistFollow} title='player' width="300" height="56" scrolling="no" frameBorder="0" allowtransparency="true"></iframe>
+        <h3 className='mb-0 p-0'>Check out my Favorite Artist's Top Tracks!</h3>
+    {/* <iframe src={artistFollow} title='player' width="300" height="56" scrolling="no" frameBorder="0" allowtransparency="true"></iframe> */}
         <iframe src={artistPlay} title='follow' width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
 </div>

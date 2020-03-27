@@ -20,6 +20,13 @@ class ProfileCreate extends Component {
         guitar: false,
         piano: false,
         drums: false,
+        bass: false,
+        vocals: false,
+        horn: false,
+        woodwind: false,
+        strings: false,
+        ukulele: false,
+
         uri: '',
     };
 
@@ -61,6 +68,12 @@ class ProfileCreate extends Component {
         guitar: 'Guitar',
         piano: 'Piano',
         drums: 'Drums',
+        bass: 'Bass Guitar',
+        vocals: 'Vocals',
+        horn: 'Horn',
+        woodwind: 'Woodwind',
+        strings: 'Strings',
+        ukulele: 'Ukulele',
     }
 
     let formData = new FormData();
@@ -87,7 +100,7 @@ class ProfileCreate extends Component {
     })
     .then(res => {
         console.log(res);
-        this.props.history.push('/events/');
+        this.props.history.push('/list/');
     })
     .catch(error =>{
         console.log(error);
@@ -125,9 +138,20 @@ class ProfileCreate extends Component {
                     <label htmlFor="guitar" className='ml-1 mr-5'>Guitar</label>
                     <input type="checkbox" checked={this.state.piano} name='piano' value={this.state.piano} onChange={this.handleCheckboxChange} />
                     <label htmlFor="piano" className='ml-1 mr-5'>Piano</label>
-
                     <input type="checkbox" checked={this.state.drums} name='drums' value={this.state.drums} onChange={this.handleCheckboxChange} />
                     <label htmlFor="drums" className='ml-1 mr-5'>Drums</label>
+                    <input type="checkbox" checked={this.state.bass} name='bass' value={this.state.bass} onChange={this.handleCheckboxChange} />
+                    <label htmlFor="bass" className='ml-1 mr-5'>Bass</label>
+                    <input type="checkbox" checked={this.state.vocals} name='vocals' value={this.state.vocals} onChange={this.handleCheckboxChange} />
+                    <label htmlFor="vocals" className='ml-1 mr-5'>Vocals</label>
+                    <input type="checkbox" checked={this.state.horn} name='horn' value={this.state.horn} onChange={this.handleCheckboxChange} />
+                    <label htmlFor="horn" className='ml-1 mr-5'>Horn</label>
+                    <input type="checkbox" checked={this.state.woodwind} name='woodwind' value={this.state.woodwind} onChange={this.handleCheckboxChange} />
+                    <label htmlFor="woodwind" className='ml-1 mr-5'>Woodwind</label>
+                    <input type="checkbox" checked={this.state.strings} name='strings' value={this.state.strings} onChange={this.handleCheckboxChange} />
+                    <label htmlFor="strings" className='ml-1 mr-5'>Strings</label>
+                    <input type="checkbox" checked={this.state.ukulele} name='ukulele' value={this.state.ukulele} onChange={this.handleCheckboxChange} />
+                    <label htmlFor="ukulele" className='ml-1 mr-5'>Ukulele</label>
                 </div>
             <h5 className='mt-5'>Choose Your Profile Pic!</h5>
             {this.state.avatar ? (
