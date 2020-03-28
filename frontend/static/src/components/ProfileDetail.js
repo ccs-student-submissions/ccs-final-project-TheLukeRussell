@@ -43,11 +43,11 @@ class ProfileDetail extends Component {
 
 render() {
     let artistPlay;
-    let artistFollow;
+    // let artistFollow;
 
     if(this.state.profile) {
         artistPlay = `https://open.spotify.com/embed/artist/${this.state.profile.uri}`
-        artistFollow = `https://open.spotify.com/follow/1/?uri=spotify:artist:${this.state.profile.uri}&size=detail&theme=dark`
+        // artistFollow = `https://open.spotify.com/follow/1/?uri=spotify:artist:${this.state.profile.uri}&size=detail&theme=dark`
     }
     
     console.log(this.state)
@@ -74,8 +74,8 @@ render() {
                 <button className='btn btn-primary'>Follow</button>
             </form>
         </div>
-        <div className="row no-gutters profile-detail">
-    <div className="col-md-10">
+        <div className="row profile-detail">
+    <div className="col-md-9">
         <div className="row no-gutters">
             <div id='profile-box' className="col-md-5">
                 <h2>Groups/Bands:</h2>
@@ -100,7 +100,7 @@ render() {
             </div>
         </div>
     </div>
-    <div className="col-md-2">
+    <div className="col-md-3 profile-right">
         <h3 className='mb-0 p-0'>Check out my Favorite Artist's Top Tracks!</h3>
     {/* <iframe src={artistFollow} title='player' width="300" height="56" scrolling="no" frameBorder="0" allowtransparency="true"></iframe> */}
         <iframe src={artistPlay} title='follow' width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
