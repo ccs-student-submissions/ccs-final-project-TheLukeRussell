@@ -13,6 +13,7 @@ class ProfileDetail extends Component {
     state = {
         followers: [],
         following: [],
+        user: '',
     }
 
     componentDidMount() {
@@ -25,6 +26,11 @@ class ProfileDetail extends Component {
             .catch(error => {
             console.log(error);
         });
+        axios.get(`/api/v1/rest-auth/user/`)
+            .then (res => this.setState({user: res.data}))
+            .catch(error => {
+                console.log(error);
+            })
 }
     handleFollow = (e) => {
         e.preventDefault();
@@ -49,16 +55,25 @@ render() {
         artistPlay = `https://open.spotify.com/embed/artist/${this.state.profile.uri}`
         // artistFollow = `https://open.spotify.com/follow/1/?uri=spotify:artist:${this.state.profile.uri}&size=detail&theme=dark`
     }
-    
-    console.log(this.state)
-    // console.log(artistPlay);
+
     let instruments;
     if (this.state.profile) {
         instruments = this.state.profile.instruments.map(instrument => <p>{instrument.text}</p>)
     }
+
     const followers = this.state.followers.map(follower => (
         <p>{follower.user.username}</p>
     ))
+
+    const followerIds = this.state.followers.map(follower => (
+        follower.user.id
+    ))
+
+    let alreadyFollows = false;
+    if(followerIds.includes(this.state.user.pk)){
+        alreadyFollows = true;
+    }
+
     const followings = this.state.following.map(following => (
         <p>{following.following.username}</p>
     ))
@@ -70,12 +85,14 @@ render() {
             <h1>Profile</h1>
             {this.state.profile && <img src={this.state.profile.avatar} alt="profile"/>}
             {this.state.profile && <p className='mt-4'>{this.state.profile.name}</p>}
-            <form id='event-form' className='mt-5' onSubmit={this.handleFollow}>
+            
+            {((this.state.id !== this.state.user.pk ) && (this.state.id !== undefined) && (alreadyFollows === false)) ? <form id='event-form' className='mt-5' onSubmit={this.handleFollow}>
                 <button className='btn btn-primary'>Follow</button>
-            </form>
+            </form> : null}
+            
         </div>
         <div className="row profile-detail">
-    <div className="col-md-9">
+    <div className="col-xl-8">
         <div className="row no-gutters">
             <div id='profile-box' className="col-md-5">
                 <h2>Groups/Bands:</h2>
@@ -100,7 +117,7 @@ render() {
             </div>
         </div>
     </div>
-    <div className="col-md-3 profile-right">
+    <div className="col-xl-4 profile-right">
         <h3 className='mb-0 p-0'>Check out my Favorite Artist's Top Tracks!</h3>
     {/* <iframe src={artistFollow} title='player' width="300" height="56" scrolling="no" frameBorder="0" allowtransparency="true"></iframe> */}
         <iframe src={artistPlay} title='follow' width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
