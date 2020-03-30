@@ -11,7 +11,7 @@ User = get_user_model()
 class TokenUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('band', 'profile')
+        fields = ('band', 'profile',)
         depth = 1
 
 class TokenSerializer(serializers.ModelSerializer):
@@ -91,6 +91,7 @@ class ConnectionSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     following = ConnectionSerializer(many=True, source='get_following')
     followers = ConnectionSerializer(many=True, source='get_followers')
+    members = BandProfileSerializer(many=True, source='get_band')
     profile = UserProfileSerializer()
     band = BandProfileSerializer()
     

@@ -13,6 +13,7 @@ class ProfileDetail extends Component {
     state = {
         followers: [],
         following: [],
+        members: [],
         user: '',
     }
 
@@ -81,6 +82,10 @@ render() {
         <p>{follower.user.username}</p>
     ))
 
+    const members = this.state.members.map(member => (
+        <p>{member.name}</p>
+    ))
+
     const followerIds = this.state.followers.map(follower => (
         follower.user.id
     ))
@@ -110,7 +115,8 @@ render() {
     <div className="col-xl-8">
         <div className="row no-gutters">
             <div id='profile-box' className="col-md-5">
-                <h2>Groups/Bands:</h2>
+                <h2>Member of Bands/Artists</h2>
+                <div>{members}</div>
             </div>
             <div id='profile-box' className="col-md-5">
                 <h2>About Me:</h2>

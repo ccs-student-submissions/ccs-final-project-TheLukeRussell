@@ -8,6 +8,9 @@ class User(AbstractUser):
     def get_followers(self):
         return Connection.objects.filter(following=self)
 
+    def get_band(self):
+        return BandProfile.objects.filter(members=self)
+
 
 class UserProfile(models.Model):
     name = models.CharField(max_length=255)
