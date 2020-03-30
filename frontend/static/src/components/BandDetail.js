@@ -29,7 +29,8 @@ class BandDetail extends Component {
             .then (res => this.setState({user: res.data}))
             .catch(error => {
                 console.log(error);
-            })
+            });
+        
 }
 
 
@@ -37,7 +38,7 @@ render() {
 
     let members;
     if (this.state.band) {
-        members = this.state.band.members.map(member => <p>{member.username}</p>)
+        members = this.state.band.members.map(member => <p key={member.id}>{member.username}</p>)
     }
 
     let artistPlay;
@@ -49,7 +50,7 @@ render() {
     }
     return(
         <React.Fragment>
-        <Header />
+        <Header userType='band'/>
         <motion.div exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} className="app">
         <div className="profile-head">
             <h1>Band Profile</h1>

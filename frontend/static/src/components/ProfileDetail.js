@@ -18,7 +18,7 @@ class ProfileDetail extends Component {
 
     componentDidMount() {
         // console.log(JSON.parse(localStorage.getItem('my-app-user')).key)
-        axios.get(`/api/v1/users/${this.props.match.params.id}/`, )
+        axios.get(`/api/v1/users/${this.props.match.params.id}/`,)
             .then(res => {
             // console.log('res', res.data);
             this.setState(res.data);
@@ -95,7 +95,7 @@ render() {
     ))
     return(
         <React.Fragment>
-        <Header />
+        <Header userType='musician'/>
         <motion.div exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} className="app">
         <div className="profile-head">
             <h1>Profile</h1>

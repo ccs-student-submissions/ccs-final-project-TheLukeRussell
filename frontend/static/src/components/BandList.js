@@ -57,7 +57,7 @@ class BandList extends Component {
             <React.Fragment>
                 <Header />
                 <motion.div exit="out" animate="in" initial="out" transition={pageTransition} variants={pageVariants} className="app">
-            <h1>Bands List</h1>
+            <h1>Bands/Artists</h1>
             <div className='profile-list row no-gutters justify-content-center'>{bands}</div>
             </motion.div>
             </React.Fragment>

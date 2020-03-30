@@ -57,7 +57,7 @@ class ProfileList extends Component {
             <React.Fragment>
                 <Header />
                 <motion.div exit="out" animate="in" initial="out" transition={pageTransition} variants={pageVariants} className="app">
-            <h1>Profiles List</h1>
+            <h1>Musicians</h1>
             <div className='profile-list row no-gutters justify-content-center'>{profiles}</div>
             </motion.div>
             </React.Fragment>

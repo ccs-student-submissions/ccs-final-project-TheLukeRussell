@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from accounts.models import UserProfile, Instrument, Connection, BandProfile
+from rest_auth.models import TokenModel
 from django import forms
 import json
 
@@ -7,6 +8,17 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+class TokenUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('band', 'profile')
+        depth = 1
+
+class TokenSerializer(serializers.ModelSerializer):
+    user = TokenUserSerializer(many=False, read_only=True)
+    class Meta:
+        model = TokenModel
+        fields = ('key', 'user',)
 
 class InstrumentSerializer(serializers.ModelSerializer):
     class Meta:
