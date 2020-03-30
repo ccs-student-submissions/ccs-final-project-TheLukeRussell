@@ -47,7 +47,23 @@ class ProfileDetail extends Component {
         window.location.reload()
     }
 
+    // handleUnfollow = (follower) => {
+    //     let data = {following: this.props.match.params.id}
+
+    //     axios.delete(`/api/v1/users/${this.props.match.params.id}/${follower.id}/`,)
+    //     .then(res => {
+    //         let followers = [...this.state.followers]
+    //         let ndx = followers.indexOf(follower)
+    //         followers.splice(ndx,1) 
+    //         this.setState({followers})
+    //         })
+    //     .catch(error => {
+    //         console.log(error)
+    //         })
+    //     }
+
 render() {
+    console.log(this.state);
     let artistPlay;
     // let artistFollow;
 
@@ -85,7 +101,6 @@ render() {
             <h1>Profile</h1>
             {this.state.profile && <img src={this.state.profile.avatar} alt="profile"/>}
             {this.state.profile && <p className='mt-4'>{this.state.profile.name}</p>}
-            
             {((this.state.id !== this.state.user.pk ) && (this.state.id !== undefined) && (alreadyFollows === false)) ? <form id='event-form' className='mt-5' onSubmit={this.handleFollow}>
                 <button className='btn btn-primary'>Follow</button>
             </form> : null}

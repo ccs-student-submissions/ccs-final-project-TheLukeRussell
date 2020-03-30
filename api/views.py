@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions, viewsets
 from django.shortcuts import get_object_or_404
-from accounts.models import UserProfile, User, Connection
-from .serializers import UserProfileSerializer, UserSerializer, ConnectionSerializer
+from accounts.models import UserProfile, User, Connection, BandProfile
+from .serializers import UserProfileSerializer, UserSerializer, ConnectionSerializer, BandProfileSerializer
 
 
 class UserListAPIView(generics.ListAPIView):
@@ -16,7 +16,6 @@ class ProfileList(generics.ListCreateAPIView):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
 
-
 class UserProfileCreateAPIView(generics.ListCreateAPIView):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
@@ -24,10 +23,28 @@ class UserProfileCreateAPIView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user)
 
-
 class UserProfileRetieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
+
+    def patch(self, request, *args, **kwargs):
+        return self.partial_update(request, *args, **kwargs)
+
+class BandProfileList(generics.ListCreateAPIView):
+    queryset = BandProfile.objects.all()
+    serializer_class = BandProfileSerializer
+
+class BandProfileCreateAPIView(generics.ListCreateAPIView):
+    queryset = BandProfile.objects.all()
+    serializer_class = BandProfileSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(created_by=self.request.user)
+
+
+class BandProfileRetieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = BandProfile.objects.all()
+    serializer_class = BandProfileSerializer
 
     def patch(self, request, *args, **kwargs):
         return self.partial_update(request, *args, **kwargs)

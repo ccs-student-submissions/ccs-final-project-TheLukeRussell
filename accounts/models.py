@@ -22,6 +22,18 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.name
 
+class BandProfile(models.Model):
+    name = models.CharField(max_length=255)
+    avatar = models.ImageField(upload_to='images/', blank=True, null=True)
+    about = models.TextField()
+    uri = models.CharField(max_length=255, blank=True)
+    members = models.ManyToManyField(User, related_name="members", blank=True)
+    created_by = models.OneToOneField(User, related_name='band', blank=True, on_delete=models.CASCADE)
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
+
 class Instrument(models.Model):
     text = models.TextField()
 
