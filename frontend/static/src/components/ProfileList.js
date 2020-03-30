@@ -40,7 +40,7 @@ class ProfileList extends Component {
     render() {
         // console.log(this.state);
         const profiles = this.state.profiles.map(profile => (
-                <Card key={profile.id} className='m-5 col-sm-9 col-md-7 col-lg-5 col-xl-3' id='profile-card'>
+                <Card key={profile.id} className='m-5 col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-2' id='profile-card'>
                 <Card.Img variant="top" src={profile.avatar} />
                 <Card.Body>
                 <Card.Title>Name: </Card.Title>
@@ -49,7 +49,7 @@ class ProfileList extends Component {
                     <Card.Text>{profile.about}</Card.Text>
                 </Card.Body>
                 <Link to={`/profile/detail/${profile.created_by.id}/`}>
-                <button className='btn btn-dark mr-2'>View Profile</button>
+                <button className='btn btn-dark mr-2'>Profile</button>
                 </Link>
                 </Card>
         ))

@@ -49,7 +49,7 @@ class BandList extends Component {
                     <Card.Text>{band.about}</Card.Text>
                 </Card.Body>
                 <Link to={`/band/detail/${band.created_by.id}/`}>
-                <button className='btn btn-dark mr-2'>View Band</button>
+                <button className='btn btn-dark mr-2'>Profile</button>
                 </Link>
                 </Card>
         ))

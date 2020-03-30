@@ -18,8 +18,7 @@ class Header extends Component {
     
     componentDidMount() {
         axios.get(`/api/v1/rest-auth/user/`)
-            .then (res => {this.setState({user: res.data})
-            console.log(res)})
+            .then (res => this.setState({user: res.data}))
             .catch(error => {
                 console.log(error);
             })
@@ -32,7 +31,7 @@ class Header extends Component {
     }
 
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         const { move } = this.state;
     if (move) {
         return <Redirect to='/' push={true} />
@@ -42,7 +41,7 @@ class Header extends Component {
         return(
             <React.Fragment>
             <div id='navbar' className="row no-gutters">
-            <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'><Link to={`/profile/detail/${this.state.user.pk}`}>{this.state.user.username}</Link></motion.li>
+            <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'><Link to={`/profile/detail/${this.state.user.pk}`}>Profile</Link></motion.li>
             <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'><Link to="/list/">Musicians</Link></motion.li>
             <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'><Link to="/band/">Bands/Artists</Link></motion.li>
             <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'><Link to="/events/">Events</Link></motion.li>
@@ -54,7 +53,7 @@ class Header extends Component {
             return(
                 <React.Fragment>
                 <div id='navbar' className="row no-gutters">
-                <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'><Link to={`/band/detail/${this.state.user.pk}`}>{this.state.user.username}</Link></motion.li>
+                <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'><Link to={`/band/detail/${this.state.user.pk}`}>Profile</Link></motion.li>
                 <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'><Link to="/list/">Musicians</Link></motion.li>
                 <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'><Link to="/band/">Bands/Artists</Link></motion.li>
                 <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'><Link to="/events/">Events</Link></motion.li>
