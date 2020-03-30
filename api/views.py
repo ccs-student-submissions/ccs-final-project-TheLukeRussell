@@ -57,14 +57,6 @@ class InstrumentRetrieveAPIView(generics.RetrieveAPIView):
         user = self.request.user
         return UserProfile.objects.filter(instruments=instruments)
 
-# class UserProfileListAPIView(generics.ListAPIView):
-#     queryset = UserProfile.objects.all()
-#     serializer_class = UserProfileSerializer
-
-    # def get_queryset(self):
-    #     user = self.request.user
-    #     return UserProfile.objects.filter(created_by=user.id)
-
 class ConnectionListCreateAPIView(generics.ListCreateAPIView):
     queryset = Connection.objects.all()
     serializer_class = ConnectionSerializer

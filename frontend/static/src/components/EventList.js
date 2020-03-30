@@ -12,7 +12,6 @@ axios.defaults.headers.common["Authorization"] = localStorage.getItem('my-app-us
 
 class EventItem extends Component {
 
-
     render() {
         if (this.props.user.pk === this.props.creator) {
         return(

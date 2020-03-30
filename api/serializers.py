@@ -80,6 +80,7 @@ class UserSerializer(serializers.ModelSerializer):
     following = ConnectionSerializer(many=True, source='get_following')
     followers = ConnectionSerializer(many=True, source='get_followers')
     profile = UserProfileSerializer()
+    band = BandProfileSerializer()
     
     class Meta:
         model = User

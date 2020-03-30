@@ -32,7 +32,7 @@ class Home extends Component{
         <h3>The app that connects Greenville musicians to one another</h3>
         <h5>Click below to Login or Signup!</h5>
         <Link to="/login"><button className='btn btn-dark mr-2'>Login</button></Link>
-        <Link to="/signup"><button className='btn btn-dark ml-2'>Signup</button></Link>
+        <Link to="/signup-choice"><button className='btn btn-dark ml-2'>Signup</button></Link>
             <div id='content-sources'>*This is where I will site sources if I have any*</div>
             </motion.div>
             </React.Fragment>
