@@ -12,7 +12,7 @@ class BandDetail extends Component {
 
     state = {
         user: '',
-        members: [],
+        band_following: [],
     }
 
     componentDidMount() {
@@ -36,21 +36,25 @@ class BandDetail extends Component {
 
 render() {
 
-    let members;
-    if (this.state.band) {
-        members = this.state.band.members.map(member => <p key={member.id}>{member.username}</p>)
-    }
+
+    // const bands = this.state.bands.map(band =>(
+    // <p>{band.user.username}</p>
+    // ))
+
+    const bandFollowing = this.state.band_following.map(band_following => (
+        <p>{band_following.band_member.username}</p>
+    ))
 
     let artistPlay;
     // let artistFollow;
-    console.log(this.state.band);
+    console.log(this.state);
     if(this.state.band) {
         artistPlay = `https://open.spotify.com/embed/artist/${this.state.band.uri}`
         // artistFollow = `https://open.spotify.com/follow/1/?uri=spotify:artist:${this.state.profile.uri}&size=detail&theme=dark`
     }
     return(
         <React.Fragment>
-        <Header userType='band'/>
+        <Header/>
         <motion.div exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} className="app">
         <div className="profile-head">
             <h1>Band Profile</h1>
@@ -67,7 +71,7 @@ render() {
             </div>
             <div id='profile-box' className="col-md-5">
                 <h2>Members:</h2>
-                {members}
+                {bandFollowing}
             </div>
         </div>
     </div>

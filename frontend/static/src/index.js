@@ -36,7 +36,7 @@ const App = () => (
                     <Route path='/login' component={Login}></Route>
                     <Route path='/signup-choice' component={Signup}></Route>
                     <Route path='/signup' component={Registration}></Route>
-                    <Route path='/band-signup' component={RegistrationBand}></Route>
+                    <Route path='/band-signup/' component={RegistrationBand}></Route>
                     <Route exact path='/events/' component={EventList}></Route>
                     <Route exact path='/events/:id/' component={EventDetail}></Route>
                     <Route exact path='/' component={Home}></Route>

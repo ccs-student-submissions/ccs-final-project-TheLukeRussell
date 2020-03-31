@@ -18,4 +18,5 @@ urlpatterns = [
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
     path('profile/detail/<int:pk>/', views.InstrumentRetrieveAPIView.as_view(), name='profile-instruments'),
     path('connections/', views.ConnectionListCreateAPIView.as_view(), name='connections'),
+    path('members/', views.MemberListCreateAPIView.as_view(), name='members'),
 ]

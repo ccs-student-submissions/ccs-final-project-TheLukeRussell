@@ -118,7 +118,7 @@ class ProfileCreate extends Component {
     });
     }
     render(){
-        console.log(this.state)
+        // console.log(this.state)
     return (
         <motion.div exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} className="app">
             <section>

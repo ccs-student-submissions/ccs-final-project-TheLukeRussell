@@ -8,8 +8,11 @@ class User(AbstractUser):
     def get_followers(self):
         return Connection.objects.filter(following=self)
 
-    def get_band(self):
-        return BandProfile.objects.filter(members=self)
+    def get_band_following(self):
+        return Member.objects.filter(user=self)
+
+    def get_band_members(self):
+        return Member.objects.filter(band_member=self)
 
 
 class UserProfile(models.Model):
@@ -30,7 +33,7 @@ class BandProfile(models.Model):
     avatar = models.ImageField(upload_to='images/', blank=True, null=True)
     about = models.TextField()
     uri = models.CharField(max_length=255, blank=True)
-    members = models.ManyToManyField(User, related_name="members", blank=True)
+    # members = models.ManyToManyField(User, related_name="members", blank=True)
     created_by = models.OneToOneField(User, related_name='band', blank=True, on_delete=models.CASCADE)
     is_active = models.BooleanField(default=True)
 
@@ -49,3 +52,10 @@ class Connection(models.Model):
 
     def __str__(self):
         return str(self.user.username) + " followed " + str(self.following.username)
+
+class Member(models.Model):
+    user = models.ForeignKey(User, related_name="member_creator_set", on_delete=models.CASCADE)
+    band_member = models.ForeignKey(User, related_name="members", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.user.username) + " added " + str(self.band_member.username)

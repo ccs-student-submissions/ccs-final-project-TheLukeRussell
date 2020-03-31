@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions, viewsets
 from django.shortcuts import get_object_or_404
-from accounts.models import UserProfile, User, Connection, BandProfile
-from .serializers import UserProfileSerializer, UserSerializer, ConnectionSerializer, BandProfileSerializer
+from accounts.models import UserProfile, User, Connection, BandProfile, Member
+from .serializers import UserProfileSerializer, UserSerializer, ConnectionSerializer, BandProfileSerializer, MemberSerializer
 
 
 class UserListAPIView(generics.ListAPIView):
@@ -64,3 +64,11 @@ class ConnectionListCreateAPIView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         following = get_object_or_404(User, pk=self.request.data['following'])
         serializer.save(user=self.request.user, following=following);
+
+class MemberListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Member.objects.all()
+    serializer_class = MemberSerializer
+
+    def perform_create(self, serializer):
+        band_member = get_object_or_404(User, pk=self.request.data['band_following'])
+        serializer.save(user=self.request.user, band_member=band_member);

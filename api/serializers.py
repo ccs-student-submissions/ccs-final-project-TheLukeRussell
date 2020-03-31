@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from accounts.models import UserProfile, Instrument, Connection, BandProfile
+from accounts.models import UserProfile, Instrument, Connection, BandProfile, Member
 from rest_auth.models import TokenModel
 from django import forms
 import json
@@ -61,25 +61,6 @@ class BandProfileSerializer(serializers.ModelSerializer):
         model = BandProfile
         fields = '__all__'
         depth = 1
-
-    # def create(self, validated_data):
-    #     instruments_data = json.loads(self.context['request'].data['instruments'])
-    #     profile = UserProfile.objects.create(**validated_data)
-
-    #     for instrument in instruments_data:
-    #         instrument = Instrument.objects.get(text=instrument)
-    #         profile.instruments.add(instrument)
-    #     return profile
-
-    # def update(self, instance, validated_data):
-    #     instruments_data = json.loads(self.context['request'].data['instruments'])
-    #     instance.instruments.clear()
-
-    #     for instrument in instruments_data:
-    #         instrument = Instrument.objects.get(text=instrument)
-    #         instance.instruments.add(instrument)
-
-    #     return instance
         
 class ConnectionSerializer(serializers.ModelSerializer):
     class Meta:
@@ -87,11 +68,18 @@ class ConnectionSerializer(serializers.ModelSerializer):
         fields = ('user', 'following')
         depth = 1
 
+class MemberSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Member
+        fields = ('user', 'band_member')
+        depth = 1
+
 
 class UserSerializer(serializers.ModelSerializer):
     following = ConnectionSerializer(many=True, source='get_following')
     followers = ConnectionSerializer(many=True, source='get_followers')
-    members = BandProfileSerializer(many=True, source='get_band')
+    band_following = MemberSerializer(many=True, source='get_band_following')
+    band_members = MemberSerializer(many=True, source='get_band_members')
     profile = UserProfileSerializer()
     band = BandProfileSerializer()
     

@@ -82,7 +82,7 @@ class BandCreate extends Component {
     formData.append('about', this.state.about);
     formData.append('instruments', JSON.stringify(instruments));
     // console.log(instruments);
-    axios.post(`/api/v1/create/`, formData, {
+    axios.post(`/api/v1/band-create/`, formData, {
         headers : {
         'content-type': 'multipart/form-data',
         'Authorization': `Token ${JSON.parse(localStorage.getItem('my-app-user')).key}`
