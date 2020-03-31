@@ -126,7 +126,7 @@ render() {
             </form> : null}
             </div>
         </div>
-        <div className="row profile-detail">
+        <div className="row no-gutters profile-detail">
     <div className="col-xl-8">
         <div className="row no-gutters">
             <div id='profile-box' className="col-md-5">
@@ -156,7 +156,7 @@ render() {
     <div className="col-xl-4 profile-right">
         <h3 className='mb-0 p-0'>Check out my Favorite Artist's Top Tracks!</h3>
     {/* <iframe src={artistFollow} title='player' width="300" height="56" scrolling="no" frameBorder="0" allowtransparency="true"></iframe> */}
-        <iframe src={artistPlay} title='follow' width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <iframe src={artistPlay} title='follow' width="300" height="400" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
 </div>
         </motion.div>

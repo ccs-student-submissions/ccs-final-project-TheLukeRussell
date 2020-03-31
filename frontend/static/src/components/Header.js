@@ -41,11 +41,11 @@ class Header extends Component {
         return(
             <React.Fragment>
             <div id='navbar' className="row no-gutters">
-            <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'><Link to={`/profile/detail/${this.state.user.pk}`}>Profile</Link></motion.li>
-            <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'><Link to="/list/">Musicians</Link></motion.li>
-            <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'><Link to="/band/">Bands/Artists</Link></motion.li>
-            <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'><Link to="/events/">Events</Link></motion.li>
-            <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'><button className='btn btn-link' onClick={this.logout}>Logout</button></motion.li>
+            <Link id='lit' to={`/profile/detail/${this.state.user.pk}`}><motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'>Profile</motion.li></Link>
+            <Link id='lit' to="/list/"><motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'>Musicians</motion.li></Link>
+            <Link id='lit' to="/band/"><motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'>Bands/Artists</motion.li></Link>
+            <Link id='lit' to="/events/"><motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'>Events</motion.li></Link>
+            <button id='lit' className='btn btn-link' onClick={this.logout}><motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'>Logout</motion.li></button>
             </div>
             </React.Fragment>
         )
@@ -53,11 +53,11 @@ class Header extends Component {
             return(
                 <React.Fragment>
                 <div id='navbar' className="row no-gutters">
-                <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'><Link to={`/band/detail/${this.state.user.pk}`}>Profile</Link></motion.li>
-                <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'><Link to="/list/">Musicians</Link></motion.li>
-                <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'><Link to="/band/">Bands/Artists</Link></motion.li>
-                <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'><Link to="/events/">Events</Link></motion.li>
-                <motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'><button className='btn btn-link' onClick={this.logout}>Logout</button></motion.li>
+                <Link to={`/band/detail/${this.state.user.pk}`}><motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'>Profile</motion.li></Link>
+                <Link to="/list/"><motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'>Musicians</motion.li></Link>
+                <Link to="/band/"><motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'>Bands/Artists</motion.li></Link>
+                <Link to="/events/"><motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'>Events</motion.li></Link>
+                <button className='btn btn-link' onClick={this.logout}><motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'>Logout</motion.li></button>
                 </div>
                 </React.Fragment>
             )

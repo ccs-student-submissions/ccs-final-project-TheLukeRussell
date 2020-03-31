@@ -74,7 +74,7 @@ class Registration extends Component  {
                             <input type="password" onChange={this.handleChange} name='password1' value={this.state.password1} placeholder='Enter Password' required/><br/>
                         <label htmlFor="password2">Password</label><br/>
                             <input type="password" onChange={this.handleChange} name='password2' value={this.state.password2} placeholder='Confirm Password' required/><br/>
-                        <button className='btn btn-success mt-3 mr-2'>Signup</button>
+                        <button className='btn btn-dark mt-3 mr-2'>Signup</button>
                     </form>
             </div>
         </div>

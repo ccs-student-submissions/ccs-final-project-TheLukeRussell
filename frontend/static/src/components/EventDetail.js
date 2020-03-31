@@ -38,7 +38,7 @@ render() {
         <Header />
         <motion.div exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} className="app">
         <h1 className='mt-5'>Details of the Event!</h1>
-        <div id='event-detail' className="row no-gutters">
+        <div id='event-detail' className="justify-content-center row no-gutters mb-5">
             <div className="col-md-6">
                 <Card key={this.state.id}>
                     <Card.Img variant="top" src={this.state.image} />
@@ -58,7 +58,8 @@ render() {
                     </Card.Body>
                 </Card>
             </div>
-            <div className="col-md">
+            <div className="col-md-1"></div>
+            <div className="col-md-3">
                 <Comment />
             </div>
         </div>

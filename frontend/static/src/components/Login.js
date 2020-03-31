@@ -71,7 +71,7 @@ class Login extends Component  {
                             <input type="text" onChange={this.handleChange} value={this.state.email} name='email' placeholder='Enter Email' required/><br/>
                         <label htmlFor="password">Password</label><br/>
                             <input type="password" onChange={this.handleChange} value={this.state.password} name='password' placeholder='Enter Password' required/><br/>
-                        <button className='btn btn-success mt-3 mr-2'>Login</button>
+                        <button className='btn btn-dark mt-3 mr-2'>Login</button>
                     </form>
             </div>
         </div>
