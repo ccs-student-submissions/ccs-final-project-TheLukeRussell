@@ -80,7 +80,7 @@ render() {
     }
 
     const bandMembers = this.state.band_members.map(band_member => (
-        <p>{band_member.user.username}</p>
+        <a href={`/band/detail/${band_member.user.id}`}>{band_member.user.username}</a>
     ))
 
     const bandMembersIds = this.state.band_members.map(band_member => (
@@ -88,7 +88,11 @@ render() {
     ))
 
     const followers = this.state.followers.map(follower => (
-        <p>{follower.user.username}</p>
+        <a href={`/profile/detail/${follower.user.id}`}>{follower.user.username}</a>
+    ))
+
+    const followings = this.state.following.map(following => (
+        <a href={`/profile/detail/${following.following.id}`}>{following.following.username}</a>
     ))
     
     const followerIds = this.state.followers.map(follower => (
@@ -104,10 +108,6 @@ render() {
     if(bandMembersIds.includes(this.state.user.pk)){
         alreadyMembers = true;
     }
-
-    const followings = this.state.following.map(following => (
-        <p>{following.following.username}</p>
-    ))
     return(
         <React.Fragment>
         <Header/>
@@ -131,25 +131,25 @@ render() {
         <div className="row no-gutters">
             <div id='profile-box' className="col-md-5">
                 <h2>Member of Bands/Artists</h2>
-                <div>{bandMembers}</div>
+                <div id='follow-me'>{bandMembers}</div>
             </div>
             <div id='profile-box' className="col-md-5">
-                <h2>About Me:</h2>
+                <h2>About Me</h2>
                 {this.state.profile && <p>{this.state.profile.about}</p>}
             </div>
         </div>
         <div className="row no-gutters">
             <div id='profile-box' className="col-md-5">
-                <h2>Instruments:</h2>
+                <h2>Instruments</h2>
                 <div>{instruments}</div>
             </div>
             <div id='profile-box' className="col-md-2">
-                <h2>Followers:</h2>
-                <div>{followers}</div>
+                <h2>Followers</h2>
+                <div id='follow-me'>{followers}</div>
             </div>
             <div id='profile-box' className="col-md-2">
-                <h2>Following:</h2>
-                <div>{followings}</div>
+                <h2>Following</h2>
+                <div id='follow-me'>{followings}</div>
             </div>
         </div>
     </div>

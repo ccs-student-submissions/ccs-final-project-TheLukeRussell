@@ -30,9 +30,9 @@ class EventDetail extends Component {
 
 render() {
     console.log(this.state);
-    const attendees = this.state.attendees.map(attendee => (
-        <Card.Text key={attendee.id}>{attendee.username}</Card.Text>
-    ))
+    // const attendees = this.state.attendees.map(attendee => (
+    //     <Card.Text key={attendee.id}>{attendee.username}</Card.Text>
+    // ))
     return(
         <React.Fragment>
         <Header />
@@ -51,10 +51,10 @@ render() {
                         <Card.Text><strong>{this.state.category}</strong></Card.Text>
                     <Card.Title><i>Location: </i></Card.Title>
                         <Card.Text><strong>{this.state.location}</strong></Card.Text>
-                    <Card.Title><i>Who Made It: </i></Card.Title>
+                    <Card.Title><i>Owner: </i></Card.Title>
                     {this.state.created_by && <Card.Text>{this.state.created_by.username}</Card.Text>}
-                    <Card.Title><i>Who's coming?!: </i></Card.Title>
-                        {attendees}
+                    {/* <Card.Title><i>Who's coming?!: </i></Card.Title>
+                        {attendees} */}
                     </Card.Body>
                 </Card>
             </div>

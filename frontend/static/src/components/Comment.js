@@ -77,11 +77,11 @@ class CommentBox extends Component {
         return (
         <form className="comment-form" onSubmit={this.handleSubmit.bind(this)}>
             <div className="comment-form-fields">
-            <input placeholder="Name" required ref={(input) => this.author = input}></input><br />
+            <input placeholder="Name" className='mb-2' required ref={(input) => this.author = input}></input><br />
             <textarea placeholder="Comment" rows="4" required ref={(textarea) => this.body = textarea}></textarea>
             </div>
             <div className="comment-form-actions">
-            <button className='btn btn-dark' type="submit">Post Comment</button>
+            <button className='btn btn-dark' type="submit">Post</button>
             </div>
         </form>
         );

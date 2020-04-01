@@ -42,15 +42,15 @@ render() {
     // ))
 
     const bandFollowing = this.state.band_following.map(band_following => (
-        <p>{band_following.band_member.username}</p>
+        <a href={`/profile/detail/${band_following.band_member.id}`}>{band_following.band_member.username}</a>
     ))
 
     let artistPlay;
-    // let artistFollow;
+    let artistFollow;
     console.log(this.state);
     if(this.state.band) {
         artistPlay = `https://open.spotify.com/embed/artist/${this.state.band.uri}`
-        // artistFollow = `https://open.spotify.com/follow/1/?uri=spotify:artist:${this.state.profile.uri}&size=detail&theme=dark`
+        artistFollow = `https://open.spotify.com/follow/1/?uri=spotify:artist:${this.state.band.uri}&size=detail&theme=dark`
     }
     return(
         <React.Fragment>
@@ -61,23 +61,24 @@ render() {
             {this.state.band && <img src={this.state.band.avatar} alt="profile"/>}
             {this.state.band && <p className='mt-4'>{this.state.band.name}</p>}
             
+            
         </div>
         <div className="row profile-detail">
     <div className="col-xl-8">
         <div className="row no-gutters">
             <div id='profile-box' className="col-md-5">
-                <h2>About Us:</h2>
+                <h2>About Us</h2>
                 {this.state.band && <p>{this.state.band.about}</p>}
             </div>
             <div id='profile-box' className="col-md-5">
-                <h2>Members:</h2>
-                {bandFollowing}
+                <h2>Members</h2>
+                <div id='follow-me'>{bandFollowing}</div>
             </div>
         </div>
     </div>
     <div className="col-xl-4 profile-right">
         <h3 className='mb-0 p-0'>Check out our Top Tracks!</h3>
-    {/* <iframe src={artistFollow} title='player' width="300" height="56" scrolling="no" frameBorder="0" allowtransparency="true"></iframe> */}
+        <iframe src={artistFollow} title='player' width="300" height="56" scrolling="no" frameBorder="0" allowtransparency="true"></iframe>
         <iframe src={artistPlay} title='follow' width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
 </div>
