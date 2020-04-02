@@ -11,7 +11,7 @@ class BandDetail extends Component {
 
 
     state = {
-        user: JSON.parse(localStorage.getItem('my-app-user')).user.profile.created_by,
+        user: '',
         band_following: [],
     }
 
@@ -25,11 +25,11 @@ class BandDetail extends Component {
             .catch(error => {
             console.log(error);
         });
-        // axios.get(`/api/v1/rest-auth/user/`)
-        //     .then (res => this.setState({user: res.data}))
-        //     .catch(error => {
-        //         console.log(error);
-        //     });
+        axios.get(`/api/v1/rest-auth/user/`)
+            .then (res => this.setState({user: res.data}))
+            .catch(error => {
+                console.log(error);
+            });
         
 }
 

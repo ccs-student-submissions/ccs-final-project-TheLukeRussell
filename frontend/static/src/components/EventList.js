@@ -109,15 +109,6 @@ class EventList extends Component {
 
     render() {
         const events = this.state.events.map(event => (
-                // <Card key={event.id} className='col-md-4 mb-5' id='event-card'>
-                // <Card.Img variant="top" src={event.image} />
-                // <Card.Body>
-                //     <Card.Text>{event.title}</Card.Text>
-                //     <Button onClick={() => this.handleDelete(event)} className='btn btn-danger'>Delete</Button>
-                //     <Button onClick={() => this.editEvent(event)} className='btn btn-primary'>Edit</Button>
-                //     <Link to={`/events/${event.id}/`}><button className='btn btn-success'>View Event</button></Link>
-                // </Card.Body>
-                // </Card>
                 <EventItem key={event.id} event={event} user={this.state.user} creator={event.created_by.id} />
         ))
 
