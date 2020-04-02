@@ -22,7 +22,7 @@ app_name = 'frontend'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('events/', include('events.urls', namespace = 'events')),
+    # path('events/', include('events.urls', namespace = 'events')),
     path('api/v1/', include('api.urls')),
     path('auth-api/', include('rest_framework.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
