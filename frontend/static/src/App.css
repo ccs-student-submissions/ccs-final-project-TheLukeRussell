@@ -392,3 +392,111 @@ body::-webkit-scrollbar
     width: 0px;
     background-color: #000;
 }
+
+#error-text {
+  top: 30%;
+  position: relative;
+  font-size: 40px;
+  color: #eee;
+}
+#error-text a{
+  color: #eee;
+}
+
+#error-text a:hover {
+  color: #fff;
+}
+
+#error-text p {
+  color: #eee;
+  margin: 70px 0 0 0;
+}
+
+#error-text i {
+  margin-left: 10px;
+}
+
+#error-text p.hello {
+  margin: 40px 0 0 0;
+}
+
+#error-text span {
+  position: relative;
+  background-color: #000;
+  color: #fff;
+  font-size: 300%;
+  padding: 0 20px;
+  border-radius: 5px;
+  font-weight: bolder;
+  transition: all .5s;
+  margin: 0 0 40px 0;
+  box-shadow: 0px 10px 15px 0px #6F2232, 0px 0px 10px 0px #8a8a8d;
+}
+
+#error-text span:hover {
+  background: #6F2232;
+  color: #fff;
+  -webkit-animation: jelly .5s;
+  -moz-animation: jelly .5s;
+  -ms-animation: jelly .5s;
+  -o-animation: jelly .5s;
+  animation: jelly .5s;
+  box-shadow: 0px 10px 15px 0px #000, 0px 0px 10px 0px #6F2232;
+}
+
+#error {
+  background: #222;
+  text-align: center;
+  margin-bottom: 50px;
+  font-weight: 400;
+  font-size: 20px;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  line-height: 1.5em;
+  z-index: 9999;
+  left: 0px;
+}
+
+@-webkit-keyframes jelly {
+  from, to {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  25% {
+    -webkit-transform: scale(.9, 1.1);
+    transform: scale(.9, 1.1);
+  }
+  50% {
+    -webkit-transform: scale(1.1, .9);
+    transform: scale(1.1, .9);
+  }
+  75% {
+    -webkit-transform: scale(.95, 1.05);
+    transform: scale(.95, 1.05);
+  }
+}
+
+@keyframes jelly {
+  from, to {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  25% {
+    -webkit-transform: scale(.9, 1.1);
+    transform: scale(.9, 1.1);
+  }
+  50% {
+    -webkit-transform: scale(1.1, .9);
+    transform: scale(1.1, .9);
+  }
+  75% {
+    -webkit-transform: scale(.95, 1.05);
+    transform: scale(.95, 1.05);
+  }
+}
+
+#not-found {
+  font-size: 30px;
+  font-weight: bolder;
+}

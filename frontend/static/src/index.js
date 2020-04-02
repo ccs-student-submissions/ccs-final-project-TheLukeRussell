@@ -19,6 +19,7 @@ import ProfileDetail from './components/ProfileDetail';
 import EventDetail from './components/EventDetail';
 import Spotify from './components/Spotify';
 import EventList from './components/EventList';
+import NotFoundPage from './components/NotFoundPage';
 import EventForm from './components/EventForm';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { AnimatePresence} from "framer-motion"
@@ -48,6 +49,7 @@ const App = () => (
                     <Route exact path='/band-create/' component={BandCreate}></Route>
                     <Route exact path='/profile/detail/:id/' component={ProfileDetail}></Route>
                     <Route exact path='/band/detail/:id/' component={BandDetail}></Route>
+                    <Route component={NotFoundPage} />
                 </Switch>
                 </AnimatePresence>
         )}

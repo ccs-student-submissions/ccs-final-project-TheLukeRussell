@@ -9,18 +9,6 @@ axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSFRToken'
 axios.defaults.headers.common["Authorization"] = localStorage.getItem('my-app-user') ? `Token ${JSON.parse(localStorage.getItem('my-app-user')).key}` : null;
 
-const pageVariants = {
-    in: {
-        opacity: 1,
-    },
-    out: {
-        opacity: 0,
-    }
-}
-const pageTransition = {
-    duration: 1
-}
-
 
 class ProfileList extends Component {
 
@@ -56,7 +44,7 @@ class ProfileList extends Component {
         return(
             <React.Fragment>
                 <Header />
-                <motion.div exit="out" animate="in" initial="out" transition={pageTransition} variants={pageVariants} className="app">
+                <motion.div exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} className="app">
             <h1>Musicians</h1>
             <div className='profile-list row no-gutters justify-content-center'>{profiles}</div>
             </motion.div>

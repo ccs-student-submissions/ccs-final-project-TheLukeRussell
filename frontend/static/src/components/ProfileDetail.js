@@ -65,7 +65,7 @@ class ProfileDetail extends Component {
     }
 
 render() {
-    console.log(this.state);
+    // console.log(this.state);
     let artistPlay;
     // let artistFollow;
 
@@ -76,11 +76,11 @@ render() {
 
     let instruments;
     if (this.state.profile) {
-        instruments = this.state.profile.instruments.map(instrument => <p>{instrument.text}</p>)
+        instruments = this.state.profile.instruments.map(instrument => <p key={instrument.text}>{instrument.text}</p>)
     }
 
     const bandMembers = this.state.band_members.map(band_member => (
-        <a href={`/band/detail/${band_member.user.id}`}>{band_member.user.username}</a>
+        <a key={band_member.user.id} href={`/band/detail/${band_member.user.id}`}>{band_member.user.username}</a>
     ))
 
     const bandMembersIds = this.state.band_members.map(band_member => (
