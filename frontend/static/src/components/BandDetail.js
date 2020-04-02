@@ -11,7 +11,7 @@ class BandDetail extends Component {
 
 
     state = {
-        user: '',
+        user: JSON.parse(localStorage.getItem('my-app-user')).user.profile.created_by,
         band_following: [],
     }
 
@@ -25,21 +25,16 @@ class BandDetail extends Component {
             .catch(error => {
             console.log(error);
         });
-        axios.get(`/api/v1/rest-auth/user/`)
-            .then (res => this.setState({user: res.data}))
-            .catch(error => {
-                console.log(error);
-            });
+        // axios.get(`/api/v1/rest-auth/user/`)
+        //     .then (res => this.setState({user: res.data}))
+        //     .catch(error => {
+        //         console.log(error);
+        //     });
         
 }
 
 
 render() {
-
-
-    // const bands = this.state.bands.map(band =>(
-    // <p>{band.user.username}</p>
-    // ))
 
     const bandFollowing = this.state.band_following.map(band_following => (
         <a href={`/profile/detail/${band_following.band_member.id}`}>{band_following.band_member.username}</a>

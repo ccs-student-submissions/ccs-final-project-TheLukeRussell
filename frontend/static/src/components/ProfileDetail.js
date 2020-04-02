@@ -15,7 +15,8 @@ class ProfileDetail extends Component {
         following: [],
         band_members: [],
         band_following: [],
-        user: '',
+        user: JSON.parse(localStorage.getItem('my-app-user')).user.profile.created_by,
+        // user: '',
     }
 
     componentDidMount() {
@@ -28,12 +29,13 @@ class ProfileDetail extends Component {
             .catch(error => {
             console.log(error);
         });
-        axios.get(`/api/v1/rest-auth/user/`)
-            .then (res => this.setState({user: res.data}))
-            .catch(error => {
-                console.log(error);
-            })
+        // axios.get(`/api/v1/rest-auth/user/`)
+        //     .then (res => this.setState({user: res.data}))
+        //     .catch(error => {
+        //         console.log(error);
+        //     })
 }
+
     handleFollow = (e) => {
         e.preventDefault();
         
@@ -65,7 +67,7 @@ class ProfileDetail extends Component {
     }
 
 render() {
-    // console.log(this.state);
+    console.log(this.state.id);
     let artistPlay;
     // let artistFollow;
 
@@ -156,7 +158,7 @@ render() {
     <div className="col-xl-4 profile-right">
         <h3 className='mb-0 p-0'>Check out my Favorite Artist's Top Tracks!</h3>
     {/* <iframe src={artistFollow} title='player' width="300" height="56" scrolling="no" frameBorder="0" allowtransparency="true"></iframe> */}
-        <iframe src={artistPlay} title='follow' width="300" height="400" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <iframe title='play' src={artistPlay} width="300" height="400" frameBorder="0"></iframe>
     </div>
 </div>
         </motion.div>
