@@ -50,7 +50,7 @@
 
 ## ✏️ Author
 
-👤 **Luke Russell**
+ **Luke Russell**
 
 * Github: [@thelukerussell](https://github.com/thelukerussell)
 * LinkedIn: [@lukerussell-](https://linkedin.com/in/lukerussell-)
