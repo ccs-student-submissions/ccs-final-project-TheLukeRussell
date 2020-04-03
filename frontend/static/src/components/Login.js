@@ -44,6 +44,7 @@ class Login extends Component  {
     })
     .catch(error => {
         console.log(error);
+        alert('Invalid username or password, please try again.');
     });
     }
 
