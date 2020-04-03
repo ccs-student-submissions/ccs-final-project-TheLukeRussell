@@ -15,16 +15,16 @@
 
 ## Front-end Dependencies
 
-* axios: >=0.19.2
-* bootstrap: >=4.4.1
-* framer-motion: >=1.10.2
-* jquery: >=3.4.1
-* react: >=16.13.0
-* react-bootstrap: >=1.0.0-beta.17
-* react-dom: >=16.13.0
-* react-router-dom: >=5.1.2
-* react-scripts: >=3.4.0
-* spotify-web-api-js: >=1.2.0
+* axios >=0.19.2
+* bootstrap >=4.4.1
+* framer-motion >=1.10.2
+* jquery >=3.4.1
+* react >=16.13.0
+* react-bootstrap >=1.0.0-beta.17
+* react-dom >=16.13.0
+* react-router-dom >=5.1.2
+* react-scripts >=3.4.0
+* spotify-web-api-js >=1.2.0
 
 ## Back-end Packages
 
@@ -57,4 +57,4 @@ Contributions, issues and feature requests are welcome!<br />Feel free to check 
 Give a ⭐️ if you love music!
 
 ***
-_CCS Final Project_
+_CCS Final Project 2020_
