@@ -295,10 +295,22 @@ margin-bottom: 20px;
   border-radius: 10px;
 }
 
+#profile-box-1 {
+  /* background-image: url("https://www.transparenttextures.com/patterns/green-dust-and-scratches.png"); */
+  margin: 20px auto;
+  color: #fff;
+  height: 210px;
+  /* border: #4c4ecf solid 2pt; */
+  padding: 10px;
+  text-align: center;
+  overflow: scroll;
+}
+
 #follow-me a{
   color: white;
   font-size: 20px;
   display: block;
+  text-decoration: none;
 }
 
 iframe {

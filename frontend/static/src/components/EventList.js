@@ -13,15 +13,19 @@ axios.defaults.headers.common["Authorization"] = localStorage.getItem('my-app-us
 const pageVariants = {
     in: {
         opacity: 1,
+        y: 0,
+        scale: 1
     },
     out: {
         opacity: 0,
+        y: "-100%",
+        scale: .8
     }
 }
 const pageTransition = {
     type: "tween",
-    ease: "anticipate",
-    duration: .5
+    // ease: "anticipate",
+    duration: 1
 }
 
 class EventItem extends Component {

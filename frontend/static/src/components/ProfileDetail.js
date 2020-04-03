@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import Header from './Header'
 import {motion} from "framer-motion"
-import { Alert } from "react-bootstrap";
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -11,15 +10,19 @@ axios.defaults.headers.common["Authorization"] = localStorage.getItem('my-app-us
 const pageVariants = {
     in: {
         opacity: 1,
+        y: 0,
+        scale: 1
     },
     out: {
         opacity: 0,
+        y: "-100%",
+        scale: .8
     }
 }
 const pageTransition = {
     type: "tween",
-    ease: "anticipate",
-    duration: .5
+    // ease: "anticipate",
+    duration: 1
 }
 
 class ProfileDetail extends Component {
@@ -96,7 +99,7 @@ render() {
     }
 
     const bandMembers = this.state.band_members.map(band_member => (
-        <a key={band_member.user.id} href={`/band/detail/${band_member.user.id}`}>{band_member.user.username}</a>
+        <motion.a whileHover={{scale: 1.1, color: '#C3073F'}} whileTap={{scale:1}} key={band_member.user.id} href={`/band/detail/${band_member.user.id}`}>{band_member.user.username}</motion.a>
     ))
 
     const bandMembersIds = this.state.band_members.map(band_member => (
@@ -104,11 +107,11 @@ render() {
     ))
 
     const followers = this.state.followers.map(follower => (
-        <a href={`/profile/detail/${follower.user.id}`}>{follower.user.username}</a>
+        <motion.a whileHover={{scale: 1.1, color: '#C3073F'}} whileTap={{scale:1}} href={`/profile/detail/${follower.user.id}`}>{follower.user.username}</motion.a>
     ))
 
     const followings = this.state.following.map(following => (
-        <a href={`/profile/detail/${following.following.id}`}>{following.following.username}</a>
+        <motion.a whileHover={{scale: 1.1, color: '#C3073F'}} whileTap={{scale:1}} href={`/profile/detail/${following.following.id}`}>{following.following.username}</motion.a>
     ))
     
     const followerIds = this.state.followers.map(follower => (

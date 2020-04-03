@@ -51,7 +51,7 @@ class BandDetail extends Component {
 render() {
 
     const bandFollowing = this.state.band_following.map(band_following => (
-        <a href={`/profile/detail/${band_following.band_member.id}`}>{band_following.band_member.username}</a>
+        <motion.a whileHover={{scale: 1.1, color: '#C3073F'}} whileTap={{scale:1}} href={`/profile/detail/${band_following.band_member.id}`}>{band_following.band_member.username}</motion.a>
     ))
 
     let artistPlay;
@@ -78,16 +78,16 @@ render() {
             <div id='profile-box' className="col-md-5">
                 <h2>About Us</h2>
                 {this.state.band && <p>{this.state.band.about}</p>}
+                <iframe src={artistFollow} title='player' width="230" height="56" scrolling="no" frameBorder="0" allowtransparency="true"></iframe>
             </div>
             <div id='profile-box' className="col-md-5">
-                <h2>Members</h2>
+                <h2 className='mb-5'>Members</h2>
                 <div id='follow-me'>{bandFollowing}</div>
             </div>
         </div>
     </div>
     <div className="col-xl-4 profile-right">
         <h3 className='mb-0 p-0'>Check out our Top Tracks!</h3>
-        <iframe src={artistFollow} title='player' width="300" height="56" scrolling="no" frameBorder="0" allowtransparency="true"></iframe>
         <iframe src={artistPlay} title='follow' width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
 </div>
