@@ -45,7 +45,6 @@ class Registration extends Component  {
         })
         .catch(error => {
             console.log(error);
-            alert('This username is taken, please try a different one.');
         });
     }
 
