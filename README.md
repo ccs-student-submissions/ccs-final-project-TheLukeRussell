@@ -24,11 +24,12 @@
 * react-dom >=16.13.0
 * react-router-dom >=5.1.2
 * react-scripts >=3.4.0
+* source-map-explorer >=2.4.2
 * spotify-web-api-js >=1.2.0
 
 ## Back-end Packages
 
-* python version: 3.8
+* python: 3.8
 * django: 3.0.4
 * gunicorn: 20.0.4
 * whitenoise: 5.0.1
@@ -40,6 +41,12 @@
 * boto3: 1.12.19
 * django-rest-auth: 0.9.5
 * django-allauth: 0.41.0
+
+## Other Technologies Used
+
+* Amazon S3 buckets
+* Heroku
+* Spotify API
 
 ## Author
 
