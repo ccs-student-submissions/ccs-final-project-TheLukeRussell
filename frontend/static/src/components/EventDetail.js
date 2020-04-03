@@ -10,6 +10,20 @@ axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 axios.defaults.headers.common["Authorization"] = localStorage.getItem('my-app-user') ? `Token ${JSON.parse(localStorage.getItem('my-app-user')).key}` : null;
 
+const pageVariants = {
+    in: {
+        opacity: 1,
+    },
+    out: {
+        opacity: 0,
+    }
+}
+const pageTransition = {
+    type: "tween",
+    ease: "anticipate",
+    duration: .5
+}
+
 class EventDetail extends Component {
 
     state = {
@@ -36,7 +50,7 @@ render() {
     return(
         <React.Fragment>
         <Header />
-        <motion.div exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} className="app">
+        <motion.div exit="out" animate="in" initial="out" transition={pageTransition} variants={pageVariants} className="app">
         <h1 className='mt-5'>Details of the Event!</h1>
         <div id='event-detail' className="justify-content-center row no-gutters mb-5">
             <div className="col-md-6">

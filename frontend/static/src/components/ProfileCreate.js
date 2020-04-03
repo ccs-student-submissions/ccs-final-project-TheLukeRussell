@@ -7,6 +7,20 @@ axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 axios.defaults.headers.common["Authorization"] = localStorage.getItem('my-app-user') ? `Token ${JSON.parse(localStorage.getItem('my-app-user')).key}` : null;
 
+const pageVariants = {
+    in: {
+        opacity: 1,
+    },
+    out: {
+        opacity: 0,
+    }
+}
+const pageTransition = {
+    type: "tween",
+    ease: "anticipate",
+    duration: .5
+}
+
 class ProfileCreate extends Component {
 
 
@@ -120,7 +134,7 @@ class ProfileCreate extends Component {
     render(){
         // console.log(this.state)
     return (
-        <motion.div exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} className="app">
+        <motion.div exit="out" animate="in" initial="out" transition={pageTransition} variants={pageVariants} className="app">
             <section>
             <form id='profile-create' onSubmit={this.handleSubmit}>
             <h1 className='mb-5'>Create Your Profile</h1>

@@ -10,7 +10,22 @@ axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSFRToken'
 axios.defaults.headers.common["Authorization"] = localStorage.getItem('my-app-user') ? `Token ${JSON.parse(localStorage.getItem('my-app-user')).key}` : null;
 
+const pageVariants = {
+    in: {
+        opacity: 1,
+    },
+    out: {
+        opacity: 0,
+    }
+}
+const pageTransition = {
+    type: "tween",
+    ease: "anticipate",
+    duration: .5
+}
+
 class EventItem extends Component {
+
 
     render() {
         if (this.props.user.pk === this.props.creator) {
@@ -118,7 +133,7 @@ class EventList extends Component {
         return(
             <React.Fragment>
             <Header />
-            <motion.div exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} className="app">
+            <motion.div exit="out" animate="in" initial="out" transition={pageTransition} variants={pageVariants} className="app">
             <h1>Events List</h1>
             <div className="row no-gutters"><a className='add-event-btn justify-content-center' href='/add-event/' className='btn btn-success m-auto'>Add Event</a></div>
             <div className='row no-gutters justify-content-center mt-5'>

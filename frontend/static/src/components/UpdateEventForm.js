@@ -5,6 +5,20 @@ import {motion} from "framer-motion"
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 
+const pageVariants = {
+    in: {
+        opacity: 1,
+    },
+    out: {
+        opacity: 0,
+    }
+}
+const pageTransition = {
+    type: "tween",
+    ease: "anticipate",
+    duration: .5
+}
+
 class UpdateEventForm extends Component{
     state = {
         title: '',
@@ -50,7 +64,7 @@ class UpdateEventForm extends Component{
         return(
             <React.Fragment>
                 <Header />
-            <motion.div exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} className="app">
+            <motion.div exit="out" animate="in" initial="out" transition={pageTransition} variants={pageVariants} className="app">
 
                 <div className='mt-5 card col-xl-6 col-11'>
                 <h2 className='p-3'>Add An Event!</h2>

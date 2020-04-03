@@ -7,6 +7,20 @@ axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 axios.defaults.headers.common["Authorization"] = localStorage.getItem('my-app-user') ? `Token ${JSON.parse(localStorage.getItem('my-app-user')).key}` : null;
 
+const pageVariants = {
+    in: {
+        opacity: 1,
+    },
+    out: {
+        opacity: 0,
+    }
+}
+const pageTransition = {
+    type: "tween",
+    ease: "anticipate",
+    duration: .5
+}
+
 class BandDetail extends Component {
 
 
@@ -50,7 +64,7 @@ render() {
     return(
         <React.Fragment>
         <Header/>
-        <motion.div exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} className="app">
+        <motion.div exit="out" animate="in" initial="out" transition={pageTransition} variants={pageVariants} className="app">
         <div className="profile-head">
             <h1>Band Profile</h1>
             {this.state.band && <img src={this.state.band.avatar} alt="profile"/>}

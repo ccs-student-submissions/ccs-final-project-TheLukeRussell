@@ -2,10 +2,25 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import Header from './Header'
 import {motion} from "framer-motion"
+import { Alert } from "react-bootstrap";
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 axios.defaults.headers.common["Authorization"] = localStorage.getItem('my-app-user') ? `Token ${JSON.parse(localStorage.getItem('my-app-user')).key}` : null;
+
+const pageVariants = {
+    in: {
+        opacity: 1,
+    },
+    out: {
+        opacity: 0,
+    }
+}
+const pageTransition = {
+    type: "tween",
+    ease: "anticipate",
+    duration: .5
+}
 
 class ProfileDetail extends Component {
 
@@ -62,7 +77,7 @@ class ProfileDetail extends Component {
         .catch(error => {
             console.log(error);
         })
-        // window.location.reload()
+        window.location.reload()
     }
 
 render() {
@@ -112,7 +127,7 @@ render() {
     return(
         <React.Fragment>
         <Header/>
-        <motion.div exit={{ opacity: 0 }} animate={{ opacity: 1 }} initial={{ opacity: 0 }} className="app">
+        <motion.div exit="out" animate="in" initial="out" transition={pageTransition} variants={pageVariants} className="app">
         <div className="profile-head">
             <h1>Profile</h1>
             {this.state.profile && <img src={this.state.profile.avatar} alt="profile"/>}
