@@ -13,7 +13,7 @@
 
 ### 🏠 [Homepage](https://final-project-thelukerussell.herokuapp.com/)
 
-## Front-end Dependencies
+## 💾 Front-end Dependencies
 
 * axios >=0.19.2
 * bootstrap >=4.4.1
@@ -27,7 +27,7 @@
 * source-map-explorer >=2.4.2
 * spotify-web-api-js >=1.2.0
 
-## Back-end Packages
+## 💾 Back-end Packages
 
 * python: 3.8
 * django: 3.0.4
@@ -42,13 +42,13 @@
 * django-rest-auth: 0.9.5
 * django-allauth: 0.41.0
 
-## Other Technologies Used
+## 🖥 Other Technologies Used
 
 * Amazon S3 buckets
 * Heroku
 * Spotify API
 
-## Author
+## ✏️ Author
 
 👤 **Luke Russell**
 
