@@ -18,4 +18,6 @@ urlpatterns = [
     path('add-event/', views.IndexView.as_view(), name = 'add-event'),
     path('events/', views.IndexView.as_view(), name = 'events'),
     path('events/<int:pk>/', views.IndexView.as_view(), name = 'event-details'),
+    path('favicon.ico', views.IndexView.as_view(), name = 'favicon'),
+    path('manifest.json', views.IndexView.as_view(), name = 'manifest'),
 ]
