@@ -18,7 +18,7 @@ const pageVariants = {
     }
 }
 const pageTransition = {
-    type: "tween",
+    // type: "tween",
     ease: "anticipate",
     duration: .5
 }
