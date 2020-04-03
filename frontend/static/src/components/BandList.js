@@ -46,7 +46,7 @@ class BandList extends Component {
     render() {
         // console.log(this.state);
         const bands = this.state.bands.map(band => (
-                <Card key={band.id} className='m-5 col-sm-9 col-md-7 col-lg-5 col-xl-3' id='profile-card'>
+                <motion.div whileHover={{scale: 1.03}} whileTap={{scale:1}} key={band.id} className='card m-5 col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-2' id='profile-card'>
                 <Card.Img variant="top" src={band.avatar} />
                 <Card.Body>
                 <Card.Title>Name: </Card.Title>
@@ -57,7 +57,7 @@ class BandList extends Component {
                 <Link to={`/band/detail/${band.created_by.id}/`}>
                 <button className='btn btn-dark mr-2'>Profile</button>
                 </Link>
-                </Card>
+                </motion.div>
         ))
         return(
             <React.Fragment>

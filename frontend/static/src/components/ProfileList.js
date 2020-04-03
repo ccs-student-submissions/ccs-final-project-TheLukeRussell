@@ -46,7 +46,7 @@ class ProfileList extends Component {
     render() {
         // console.log(this.state);
         const profiles = this.state.profiles.map(profile => (
-                <Card key={profile.id} className='m-5 col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-2' id='profile-card'>
+                <motion.div whileHover={{scale: 1.03}} whileTap={{scale:1}} key={profile.id} className='card m-5 col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-2' id='profile-card'>
                 <Card.Img variant="top" src={profile.avatar} />
                 <Card.Body>
                 <Card.Title>Name: </Card.Title>
@@ -57,7 +57,7 @@ class ProfileList extends Component {
                 <Link to={`/profile/detail/${profile.created_by.id}/`}>
                 <button className='btn btn-dark mr-2'>Profile</button>
                 </Link>
-                </Card>
+                </motion.div>
         ))
         return(
             <React.Fragment>

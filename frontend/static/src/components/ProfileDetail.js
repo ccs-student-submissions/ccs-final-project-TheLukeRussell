@@ -132,8 +132,7 @@ render() {
         <Header/>
         <motion.div exit="out" animate="in" initial="out" transition={pageTransition} variants={pageVariants} className="app">
         <div className="profile-head">
-            <h1>Profile</h1>
-            {this.state.profile && <img src={this.state.profile.avatar} alt="profile"/>}
+            {this.state.profile && <img className='mt-5' src={this.state.profile.avatar} alt="profile"/>}
             {this.state.profile && <p className='mt-4'>{this.state.profile.name}</p>}
 
             <div className="row no-gutters justify-content-center">

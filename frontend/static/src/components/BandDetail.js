@@ -66,8 +66,7 @@ render() {
         <Header/>
         <motion.div exit="out" animate="in" initial="out" transition={pageTransition} variants={pageVariants} className="app">
         <div className="profile-head">
-            <h1>Band Profile</h1>
-            {this.state.band && <img src={this.state.band.avatar} alt="profile"/>}
+            {this.state.band && <img className='mt-5' src={this.state.band.avatar} alt="profile"/>}
             {this.state.band && <p className='mt-4'>{this.state.band.name}</p>}
             
             
