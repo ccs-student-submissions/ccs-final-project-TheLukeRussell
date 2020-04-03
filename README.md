@@ -15,11 +15,21 @@
 
 ### ✨ [Demo](https://final-project-thelukerussell.herokuapp.com/)
 
-## Prerequisites
+## Dependencies
 
-* 
-* 
-* 
+* @testing-library/jest-dom": "^4.2.4",
+* @testing-library/react": "^9.5.0",
+* @testing-library/user-event": "^7.2.1",
+* axios": "^0.19.2",
+* bootstrap": "^4.4.1",
+* framer-motion": "^1.10.2",
+* jquery": "^3.4.1",
+* react": "^16.13.0",
+* react-bootstrap": "^1.0.0-beta.17",
+* react-dom": "^16.13.0",
+* react-router-dom": "^5.1.2",
+* react-scripts": "3.4.0",
+* spotify-web-api-js": "^1.2.0"
 
 ## Author
 
