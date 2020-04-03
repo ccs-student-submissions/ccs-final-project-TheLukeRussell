@@ -11,9 +11,7 @@
 
 > An app that connects local musicians to one another.
 
-### 🏠 [Homepage](https://github.com/TheLukeRussell/movement#readme)
-
-### ✨ [Demo](https://final-project-thelukerussell.herokuapp.com/)
+### 🏠 [Homepage](https://final-project-thelukerussell.herokuapp.com/)
 
 ## Front-end Dependencies
 
@@ -30,19 +28,19 @@
 
 ## Back-end Packages
 
-* django = 3.0.4
-* gunicorn = 20.0.4
-* whitenoise = 5.0.1
-* pillow = 7.0.0
-* djangorestframework = 3.11.0
-* dj-database-url = 0.5.0
-* psycopg2-binary = 2.8.4
-* django-storages = 1.9.1
-* boto3 = 1.12.19
-* django-rest-auth = 0.9.5
-* django-allauth = 0.41.0
+* django: 3.0.4
+* gunicorn: 20.0.4
+* whitenoise: 5.0.1
+* pillow: 7.0.0
+* djangorestframework: 3.11.0
+* dj-database-url: 0.5.0
+* psycopg2-binary: 2.8.4
+* django-storages: 1.9.1
+* boto3: 1.12.19
+* django-rest-auth: 0.9.5
+* django-allauth: 0.41.0
 
-* python version = 3.8
+* python version: 3.8
 
 ## Author
 
