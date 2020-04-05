@@ -9,7 +9,7 @@
   </a>
 </p>
 
-> An app that connects local Greenville, SC musicians to one another.
+> The app that connects local Greenville, SC musicians to one another.
 
 ### 🏠 [Homepage](https://final-project-thelukerussell.herokuapp.com/)
 
