@@ -84,7 +84,7 @@ class ProfileDetail extends Component {
     }
 
 render() {
-    console.log(this.state.id);
+    // console.log(this.state.id);
     let artistPlay;
     // let artistFollow;
 
