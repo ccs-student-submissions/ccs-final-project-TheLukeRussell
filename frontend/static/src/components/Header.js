@@ -13,6 +13,7 @@ class Header extends Component {
         move: false,
         profiles: [],
         users: [],
+        user: '',
     }
 
     logout = () => {
@@ -20,9 +21,17 @@ class Header extends Component {
         localStorage.removeItem('my-app-user');
         this.setState({ move: true });
     }
+    
+    componentDidMount() {
+        axios.get(`/api/v1/rest-auth/user/`)
+            .then (res => this.setState({user: res.data}))
+            .catch(error => {
+                console.log(error);
+            })
+}
 
     render() {
-        // console.log(this.state)
+        console.log(this.state);
         const { move } = this.state;
     if (move) {
         return <Redirect to='/' push={true} />
@@ -32,7 +41,7 @@ class Header extends Component {
         return(
             <React.Fragment>
             <div id='navbar' className="row no-gutters">
-            <Link id='lit' to={`/profile/detail/${JSON.parse(localStorage.getItem('my-app-user')).user.profile.created_by}`}><motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'>Profile</motion.li></Link>
+            <Link id='lit' to={`/profile/detail/${this.state.user.pk}`}><motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'>Profile</motion.li></Link>
             <Link id='lit' to="/list/"><motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'>Musicians</motion.li></Link>
             <Link id='lit' to="/band/"><motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'>Bands/Artists</motion.li></Link>
             <Link id='lit' to="/events/"><motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'>Events</motion.li></Link>
@@ -44,7 +53,7 @@ class Header extends Component {
             return(
                 <React.Fragment>
                 <div id='navbar' className="row no-gutters">
-                <Link id='lit' to={`/band/detail/${JSON.parse(localStorage.getItem('my-app-user')).user.band.created_by}`}><motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'>Profile</motion.li></Link>
+                <Link id='lit' to={`/band/detail/${this.state.user.pk}`}><motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'>Profile</motion.li></Link>
                 <Link id='lit' to="/list/"><motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'>Musicians</motion.li></Link>
                 <Link id='lit' to="/band/"><motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'>Bands/Artists</motion.li></Link>
                 <Link id='lit' to="/events/"><motion.li whileHover={{scale: 1.1}} whileTap={{scale:1}} className='col-md' id='header-item'>Events</motion.li></Link>
