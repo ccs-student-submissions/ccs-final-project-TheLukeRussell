@@ -28,7 +28,16 @@ class EventForm extends Component {
         description: '',
         category: '',
         preview: '',
+        created_by: '',
     }
+
+    componentDidMount() {
+        axios.get(`/api/v1/rest-auth/user/`)
+            .then (res => this.setState({created_by: res.data.pk}))
+            .catch(error => {
+                console.log(error);
+            })
+}
 
     handleChange = (e) => {
         this.setState({[e.target.name]: e.target.value});
@@ -43,6 +52,7 @@ class EventForm extends Component {
         formData.append('description', this.state.description);
         formData.append('category', this.state.category);
         formData.append('image', this.state.image);
+        formData.append('created_by', this.state.created_by);
 
 
     
@@ -75,7 +85,7 @@ class EventForm extends Component {
         }
 
     render() {
-
+        console.log(this.state.created_by);
         return(
             <React.Fragment>
                 <Header />

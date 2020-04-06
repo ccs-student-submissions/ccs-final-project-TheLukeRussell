@@ -32,9 +32,9 @@ class EventItem extends Component {
 
 
     render() {
-        if (this.props.user.pk === this.props.creator) {
+        if (this.props.user.pk === this.props.created_by) {
         return(
-            <Card key={this.props.event.id} className='col-md-4 mb-5' id='event-card'>
+            <Card key={this.props.event.id} className='col-md-5 mb-5' id='event-card'>
                 <Card.Img variant="top" src={this.props.event.image} />
                 <Card.Body>
                     <Card.Text>{this.props.event.title}</Card.Text>
@@ -46,7 +46,7 @@ class EventItem extends Component {
         )
         }else {
             return(
-                <Card key={this.props.event.id} className='col-md-4 mb-5' id='event-card'>
+                <Card key={this.props.event.id} className='col-md-5 mb-5' id='event-card'>
                     <Card.Img variant="top" src={this.props.event.image} />
                     <Card.Body>
                         <Card.Text>{this.props.event.title}</Card.Text>
@@ -127,8 +127,9 @@ class EventList extends Component {
         
 
     render() {
+        console.log(this.state.events);
         const events = this.state.events.map(event => (
-                <EventItem key={event.id} event={event} user={this.state.user} creator={event.created_by.id} />
+                <EventItem key={event.id} event={event} user={this.state.user} created_by={event.created_by} />
         ))
 
         if(this.state.editingEvent){
